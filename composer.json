@@ -1,30 +1,32 @@
 {
-  "name": "softdro/accounting-bundle",
+  "name": "softdro/account-bundle",
   "license": "MIT",
   "description": "Account bundle for Symfony",
   "keywords": [
     "symfony",
-    "accounting",
+    "account",
     "transaction",
     "balance"
   ],
   "authors": [
     {
-      "name": "Softdro",
+      "name": "Md Modasser Hossain",
       "email": "info@softdro.com"
     }
   ],
   "autoload": {
-    "psr-4": {"Acme\\AccountBundle\\": ""}
+    "psr-4": {"softdro\\AccountBundle\\": ""}
   },
   "require": {
     "php": "~5.6|~7.0",
     "symfony/symfony": "~2.8|~3.0",
     "doctrine/orm": "^2.5",
-    "doctrine/doctrine-bundle": "^1.6"
+    "doctrine/doctrine-bundle": "^1.6",
+    "moneyphp/money": "^3.0"
   },
   "require-dev": {
     "phpunit/phpunit": "^5.6",
+    "friendsofsymfony/user-bundle": "v2.0.0-beta1"
   },
   "suggest": {
     "friendsofsymfony/user-bundle": "To create accounts automatically on registration for users"
