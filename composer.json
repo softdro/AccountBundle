@@ -1,34 +1,43 @@
 {
-  "name": "softdro/account-bundle",
-  "license": "MIT",
-  "description": "Account bundle for Symfony",
-  "keywords": [
-    "symfony",
-    "account",
-    "transaction",
-    "balance"
-  ],
-  "authors": [
-    {
-      "name": "Md Modasser Hossain",
-      "email": "info@softdro.com"
+    "name": "softdro/account-bundle",
+    "type": "symfony-bundle",    
+    "license": "MIT",
+    "description": "Softdro Account bundle for Symfony 4",
+    "keywords": [
+        "symfony SoftdroAccountBundle",
+        "transaction",
+        "balance"
+    ],
+    "authors": [
+        {
+            "name": "Md Modasser Hossain",
+            "email": "info@softdro.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Softdro\\AccountBundle\\": ""
+        }
+    },
+    "require": {
+        "php": "~5.6 || ^7.0",
+        "symfony/form": "^2.8 || ^3.0 || ^4.0",
+        "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
+        "doctrine/orm": "^2.5",
+        "doctrine/doctrine-bundle": "^1.6",
+        "moneyphp/money": "^3.0",
+        "symfony/twig-bundle": "^2.8 || ^3.0 || ^4.0",
+        "twig/twig": "^1.28 || ^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.8.35 || ^5.7.11 || ^6.5",
+        "friendsofsymfony/user-bundle": "v2.1.2"
+    },
+    "suggest": {
+        "friendsofsymfony/user-bundle": "To create accounts automatically on registration for users"
+    },
+    "config": {
+        "sort-packages": true
     }
-  ],
-  "autoload": {
-    "psr-4": {"softdro\\AccountBundle\\": ""}
-  },
-  "require": {
-    "php": "~5.6|~7.0",
-    "symfony/symfony": "~2.8|~3.0",
-    "doctrine/orm": "^2.5",
-    "doctrine/doctrine-bundle": "^1.6",
-    "moneyphp/money": "^3.0"
-  },
-  "require-dev": {
-    "phpunit/phpunit": "^5.6",
-    "friendsofsymfony/user-bundle": "v2.0.0-beta1"
-  },
-  "suggest": {
-    "friendsofsymfony/user-bundle": "To create accounts automatically on registration for users"
-  }
+    
 }
