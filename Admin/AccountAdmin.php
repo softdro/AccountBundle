@@ -1,6 +1,6 @@
 <?php
 
-namespace SDRO\AccountBundle\Admin;
+namespace App\SDRO\AccountBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
