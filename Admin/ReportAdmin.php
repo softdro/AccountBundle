@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Acme\AccountBundle\Admin;
+namespace SDRO\AccountBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
-use App\Acme\CoreBundle\Model\Type;
-use App\Acme\CoreBundle\Model\Status;
+use SDRO\CoreBundle\Model\Type;
+use SDRO\CoreBundle\Model\Status;
 
 class ReportAdmin extends Admin {
 
@@ -28,8 +28,8 @@ class ReportAdmin extends Admin {
 //                ->with('Account Title', array('class' => 'col-md-6'))
 //                ->add('report_index')
 //                ->add('report_index', 'sonata_type_model', array(
-//                    'class' => 'App\Acme\AccountBundle\Entity\ReportIndex',
-//                    'query' => $this->modelManager->createQuery('App\Acme\AccountBundle\Entity\ReportIndex'),
+//                    'class' => 'SDRO\AccountBundle\Entity\ReportIndex',
+//                    'query' => $this->modelManager->createQuery('SDRO\AccountBundle\Entity\ReportIndex'),
 //                    'multiple' => true,
 //                    'by_reference' => false,
 //                    'btn_add' => false,

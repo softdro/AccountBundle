@@ -6,11 +6,11 @@
  * and open the template in the editor.
  */
 
-namespace App\Acme\AccountBundle\Model;
+namespace SDRO\AccountBundle\Model;
 
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
-use App\Acme\AccountBundle\Entity\Account;
+use SDRO\AccountBundle\Entity\Account;
 
 /**
  * Description of Accounts
@@ -100,7 +100,7 @@ class Accounts {
         $fy = $this->fy;
 //        throw new \Exception($fy);
         $acc = new Account();
-        $accBalance = new \App\Acme\AccountBundle\Entity\AccountBalance();
+        $accBalance = new \SDRO\AccountBundle\Entity\AccountBalance();
         $accBalance->setPeriod($fy);
         $accBalance->setBalance(0);
         $accBalance->setAccount($acc);
@@ -158,8 +158,8 @@ class Accounts {
 //        \Doctrine\Common\Util\Debug::dump($batch);
 //        throw new \Exception($fAcc->getBalance() . ", " . $sAcc->getBalance() . " - " . $batch->getFirstCr() . " - " . $batch->getSecondCr() . " value: $fVal, $sVal");
 
-        $newLedger1 = new \App\Acme\AccountBundle\Entity\Ledger($this->fy, $batch->getFirstAccount());
-        $newLedger2 = new \App\Acme\AccountBundle\Entity\Ledger($this->fy, $batch->getSecondAccount());
+        $newLedger1 = new \SDRO\AccountBundle\Entity\Ledger($this->fy, $batch->getFirstAccount());
+        $newLedger2 = new \SDRO\AccountBundle\Entity\Ledger($this->fy, $batch->getSecondAccount());
 
         $newLedger1->setDescription($des);
         $newLedger2->setDescription($des);
@@ -188,7 +188,7 @@ class Accounts {
     public function updatePersonAccount($account, $amount, $sign = AccountUtil::Cr, $des = null) {
         $this->updateAccount($account, $amount, $sign);
 
-        $newLedger = new \App\Acme\AccountBundle\Entity\Ledger($this->fy, $account);
+        $newLedger = new \SDRO\AccountBundle\Entity\Ledger($this->fy, $account);
         if ($sign == AccountUtil::Dr)
             $newLedger->setDebit($amount);
         else
@@ -209,14 +209,14 @@ class Accounts {
 
         $this->updateAccount($account, $invoice->getDue(), $sign);
 
-        $newLedger = new \App\Acme\AccountBundle\Entity\Ledger($this->fy, $account);
+        $newLedger = new \SDRO\AccountBundle\Entity\Ledger($this->fy, $account);
         if ($sign == AccountUtil::Dr)
             $newLedger->setDebit($invoice->getAmount());
         else
             $newLedger->setCredit($invoice->getAmount());
         $newLedger->setDescription($des);
 
-        $invoiceLedger = new \App\Acme\AccountBundle\Entity\InvoiceLedger($invoice);
+        $invoiceLedger = new \SDRO\AccountBundle\Entity\InvoiceLedger($invoice);
         $invoiceLedger->setLedger($newLedger);
 
         $this->em->persist($invoiceLedger);
@@ -228,7 +228,7 @@ class Accounts {
         if (!$s_account)
             throw new \Exception("Please defind the sales batch account");
         
-        $batch = new \App\Acme\AccountBundle\Entity\Batch($cash_account, $s_account[0]);
+        $batch = new \SDRO\AccountBundle\Entity\Batch($cash_account, $s_account[0]);
         $batch->setFirstCr(TRUE);
         $batch->setSecondCr(True);
 
@@ -384,7 +384,7 @@ class Accounts {
     }
 
     public function updateInventoryAndExpanseAccount($expense) {
-//        $batch = new \App\Acme\AccountBundle\Entity\Batch();
+//        $batch = new \SDRO\AccountBundle\Entity\Batch();
 
         $batch = $this->getBatchRepository()->findOneBy(array('code' => AccountUtil::BATCH_INVENTORY_INVENTORY_EXPENSE));
         if (!isset($batch))

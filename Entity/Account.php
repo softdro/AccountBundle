@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -10,7 +10,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 /**
  * @ORM\HasLifecycleCallbacks 
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="App\Acme\AccountBundle\Entity\AccountRepository")
+ * @ORM\Entity(repositoryClass="SDRO\AccountBundle\Entity\AccountRepository")
  * @DoctrineAssert\UniqueEntity(fields="title", message="Duplicate ACCOUNT name found in same period.")
  * @DoctrineAssert\UniqueEntity(fields="code", message="Duplicate ACCOUNT CODE found in same period.")
  * @ORM\Table(name="account__account")
@@ -88,7 +88,7 @@ class Account {
     protected $second_batch;
 
     /**
-     * @ORM\OneToOne(targetEntity="\App\Acme\ProfileBundle\Entity\Person", mappedBy="account", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="\SDRO\ProfileBundle\Entity\Person", mappedBy="account", cascade={"persist"})
      */
     protected $person;
 
@@ -239,11 +239,11 @@ class Account {
     /**
      * Set accountHead
      *
-     * @param \App\Acme\AccountBundle\Entity\AccountHead $accountHead
+     * @param \SDRO\AccountBundle\Entity\AccountHead $accountHead
      *
      * @return Account
      */
-    public function setAccountHead(\App\Acme\AccountBundle\Entity\AccountHead $accountHead = null) {
+    public function setAccountHead(\SDRO\AccountBundle\Entity\AccountHead $accountHead = null) {
         $this->account_head = $accountHead;
 
         return $this;
@@ -252,7 +252,7 @@ class Account {
     /**
      * Get accountHead
      *
-     * @return \App\Acme\AccountBundle\Entity\AccountHead
+     * @return \SDRO\AccountBundle\Entity\AccountHead
      */
     public function getAccountHead() {
         return $this->account_head;
@@ -261,11 +261,11 @@ class Account {
     /**
      * Set parent
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $parent
+     * @param \SDRO\AccountBundle\Entity\Account $parent
      *
      * @return Account
      */
-    public function setParent(\App\Acme\AccountBundle\Entity\Account $parent = null) {
+    public function setParent(\SDRO\AccountBundle\Entity\Account $parent = null) {
         $this->parent = $parent;
 
         return $this;
@@ -274,7 +274,7 @@ class Account {
     /**
      * Get parent
      *
-     * @return \App\Acme\AccountBundle\Entity\Account
+     * @return \SDRO\AccountBundle\Entity\Account
      */
     public function getParent() {
         return $this->parent;
@@ -283,11 +283,11 @@ class Account {
     /**
      * Add ledger
      *
-     * @param \App\Acme\AccountBundle\Entity\Ledger $ledger
+     * @param \SDRO\AccountBundle\Entity\Ledger $ledger
      *
      * @return Account
      */
-    public function addLedger(\App\Acme\AccountBundle\Entity\Ledger $ledger) {
+    public function addLedger(\SDRO\AccountBundle\Entity\Ledger $ledger) {
         $this->ledger[] = $ledger;
 
         return $this;
@@ -296,9 +296,9 @@ class Account {
     /**
      * Remove ledger
      *
-     * @param \App\Acme\AccountBundle\Entity\Ledger $ledger
+     * @param \SDRO\AccountBundle\Entity\Ledger $ledger
      */
-    public function removeLedger(\App\Acme\AccountBundle\Entity\Ledger $ledger) {
+    public function removeLedger(\SDRO\AccountBundle\Entity\Ledger $ledger) {
         $this->ledger->removeElement($ledger);
     }
 
@@ -314,11 +314,11 @@ class Account {
     /**
      * Add invoice
      *
-     * @param \App\Acme\AccountBundle\Entity\Invoice $invoice
+     * @param \SDRO\AccountBundle\Entity\Invoice $invoice
      *
      * @return Account
      */
-    public function addInvoice(\App\Acme\AccountBundle\Entity\Invoice $invoice) {
+    public function addInvoice(\SDRO\AccountBundle\Entity\Invoice $invoice) {
         $this->invoice[] = $invoice;
 
         return $this;
@@ -327,9 +327,9 @@ class Account {
     /**
      * Remove invoice
      *
-     * @param \App\Acme\AccountBundle\Entity\Invoice $invoice
+     * @param \SDRO\AccountBundle\Entity\Invoice $invoice
      */
-    public function removeInvoice(\App\Acme\AccountBundle\Entity\Invoice $invoice) {
+    public function removeInvoice(\SDRO\AccountBundle\Entity\Invoice $invoice) {
         $this->invoice->removeElement($invoice);
     }
 
@@ -345,11 +345,11 @@ class Account {
     /**
      * Add reportIndex
      *
-     * @param \App\Acme\AccountBundle\Entity\ReportIndex $reportIndex
+     * @param \SDRO\AccountBundle\Entity\ReportIndex $reportIndex
      *
      * @return Account
      */
-    public function addReportIndex(\App\Acme\AccountBundle\Entity\ReportIndex $reportIndex) {
+    public function addReportIndex(\SDRO\AccountBundle\Entity\ReportIndex $reportIndex) {
         $this->report_index[] = $reportIndex;
 
         return $this;
@@ -358,9 +358,9 @@ class Account {
     /**
      * Remove reportIndex
      *
-     * @param \App\Acme\AccountBundle\Entity\ReportIndex $reportIndex
+     * @param \SDRO\AccountBundle\Entity\ReportIndex $reportIndex
      */
-    public function removeReportIndex(\App\Acme\AccountBundle\Entity\ReportIndex $reportIndex) {
+    public function removeReportIndex(\SDRO\AccountBundle\Entity\ReportIndex $reportIndex) {
         $this->report_index->removeElement($reportIndex);
     }
 
@@ -376,11 +376,11 @@ class Account {
     /**
      * Add firstBatch
      *
-     * @param \App\Acme\AccountBundle\Entity\Batch $firstBatch
+     * @param \SDRO\AccountBundle\Entity\Batch $firstBatch
      *
      * @return Account
      */
-    public function addFirstBatch(\App\Acme\AccountBundle\Entity\Batch $firstBatch) {
+    public function addFirstBatch(\SDRO\AccountBundle\Entity\Batch $firstBatch) {
         $this->first_batch[] = $firstBatch;
 
         return $this;
@@ -389,9 +389,9 @@ class Account {
     /**
      * Remove firstBatch
      *
-     * @param \App\Acme\AccountBundle\Entity\Batch $firstBatch
+     * @param \SDRO\AccountBundle\Entity\Batch $firstBatch
      */
-    public function removeFirstBatch(\App\Acme\AccountBundle\Entity\Batch $firstBatch) {
+    public function removeFirstBatch(\SDRO\AccountBundle\Entity\Batch $firstBatch) {
         $this->first_batch->removeElement($firstBatch);
     }
 
@@ -407,11 +407,11 @@ class Account {
     /**
      * Add secondBatch
      *
-     * @param \App\Acme\AccountBundle\Entity\Batch $secondBatch
+     * @param \SDRO\AccountBundle\Entity\Batch $secondBatch
      *
      * @return Account
      */
-    public function addSecondBatch(\App\Acme\AccountBundle\Entity\Batch $secondBatch) {
+    public function addSecondBatch(\SDRO\AccountBundle\Entity\Batch $secondBatch) {
         $this->second_batch[] = $secondBatch;
 
         return $this;
@@ -420,9 +420,9 @@ class Account {
     /**
      * Remove secondBatch
      *
-     * @param \App\Acme\AccountBundle\Entity\Batch $secondBatch
+     * @param \SDRO\AccountBundle\Entity\Batch $secondBatch
      */
-    public function removeSecondBatch(\App\Acme\AccountBundle\Entity\Batch $secondBatch) {
+    public function removeSecondBatch(\SDRO\AccountBundle\Entity\Batch $secondBatch) {
         $this->second_batch->removeElement($secondBatch);
     }
 
@@ -438,11 +438,11 @@ class Account {
     /**
      * Set person
      *
-     * @param \App\Acme\ProfileBundle\Entity\Person $person
+     * @param \SDRO\ProfileBundle\Entity\Person $person
      *
      * @return Account
      */
-    public function setPerson(\App\Acme\ProfileBundle\Entity\Person $person = null) {
+    public function setPerson(\SDRO\ProfileBundle\Entity\Person $person = null) {
         $this->person = $person;
 
         return $this;
@@ -451,7 +451,7 @@ class Account {
     /**
      * Get person
      *
-     * @return \App\Acme\ProfileBundle\Entity\Person
+     * @return \SDRO\ProfileBundle\Entity\Person
      */
     public function getPerson() {
         return $this->person;
@@ -461,11 +461,11 @@ class Account {
     /**
      * Set shareAccount
      *
-     * @param \App\Acme\AccountBundle\Entity\ShareAccount $shareAccount
+     * @param \SDRO\AccountBundle\Entity\ShareAccount $shareAccount
      *
      * @return Account
      */
-    public function setShareAccount(\App\Acme\AccountBundle\Entity\ShareAccount $shareAccount = null) {
+    public function setShareAccount(\SDRO\AccountBundle\Entity\ShareAccount $shareAccount = null) {
         $this->share_account = $shareAccount;
 
         return $this;
@@ -474,7 +474,7 @@ class Account {
     /**
      * Get shareAccount
      *
-     * @return \App\Acme\AccountBundle\Entity\ShareAccount
+     * @return \SDRO\AccountBundle\Entity\ShareAccount
      */
     public function getShareAccount() {
         return $this->share_account;
@@ -484,11 +484,11 @@ class Account {
     /**
      * Add shareAccount
      *
-     * @param \App\Acme\AccountBundle\Entity\ShareAccount $shareAccount
+     * @param \SDRO\AccountBundle\Entity\ShareAccount $shareAccount
      *
      * @return Account
      */
-    public function addShareAccount(\App\Acme\AccountBundle\Entity\ShareAccount $shareAccount)
+    public function addShareAccount(\SDRO\AccountBundle\Entity\ShareAccount $shareAccount)
     {
         $this->share_account[] = $shareAccount;
 
@@ -498,9 +498,9 @@ class Account {
     /**
      * Remove shareAccount
      *
-     * @param \App\Acme\AccountBundle\Entity\ShareAccount $shareAccount
+     * @param \SDRO\AccountBundle\Entity\ShareAccount $shareAccount
      */
-    public function removeShareAccount(\App\Acme\AccountBundle\Entity\ShareAccount $shareAccount)
+    public function removeShareAccount(\SDRO\AccountBundle\Entity\ShareAccount $shareAccount)
     {
         $this->share_account->removeElement($shareAccount);
     }
@@ -508,11 +508,11 @@ class Account {
     /**
      * Add accountGroup
      *
-     * @param \App\Acme\AccountBundle\Entity\AccountGroup $accountGroup
+     * @param \SDRO\AccountBundle\Entity\AccountGroup $accountGroup
      *
      * @return Account
      */
-    public function addAccountGroup(\App\Acme\AccountBundle\Entity\AccountGroup $accountGroup)
+    public function addAccountGroup(\SDRO\AccountBundle\Entity\AccountGroup $accountGroup)
     {
         $accountGroup->setAccounts($this);
         $this->account_group[] = $accountGroup;
@@ -523,9 +523,9 @@ class Account {
     /**
      * Remove accountGroup
      *
-     * @param \App\Acme\AccountBundle\Entity\AccountGroup $accountGroup
+     * @param \SDRO\AccountBundle\Entity\AccountGroup $accountGroup
      */
-    public function removeAccountGroup(\App\Acme\AccountBundle\Entity\AccountGroup $accountGroup)
+    public function removeAccountGroup(\SDRO\AccountBundle\Entity\AccountGroup $accountGroup)
     {
         $this->account_group->removeElement($accountGroup);
     }

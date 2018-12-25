@@ -6,12 +6,12 @@
  * and open the template in the editor.
  */
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
 use Acme\CoreBundle\Model\Util;
 use Acme\CoreBundle\Model\Type;
-use App\Acme\AccountBundle\Model\AccountUtil;
+use SDRO\AccountBundle\Model\AccountUtil;
 
 class AccountRepository extends EntityRepository {
 

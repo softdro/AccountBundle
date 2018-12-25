@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Acme\AccountBundle\Admin;
+namespace SDRO\AccountBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use App\Acme\CoreBundle\Model\Type;
+use SDRO\CoreBundle\Model\Type;
 
 class LedgerAdmin extends Admin {
 
@@ -50,11 +50,11 @@ class LedgerAdmin extends Admin {
 //id, batch_id, period_id, account_id, description, debit,  credit, created
         $formMapper
 //                ->add('account', 'entity', array(
-//                    'class' => 'App\Acme\AccountBundle\Entity\Account',), array('admin_code' => 'acme.account.admin.account'))
+//                    'class' => 'SDRO\AccountBundle\Entity\Account',), array('admin_code' => 'acme.account.admin.account'))
 //                ->add('account', 'sonata_type_model', array(
 //                    'query' => $query,
 //                    'required' => true,
-//                    'targetEntity' => 'App\Acme\AccountBundle\Entity\Account',
+//                    'targetEntity' => 'SDRO\AccountBundle\Entity\Account',
 //                    'admin_code' => 'acme.person.admin.account'
 ////                    'empty_value' => '-- select one --',
 //                ))

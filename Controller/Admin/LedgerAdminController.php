@@ -12,7 +12,7 @@
  * @author modasser
  */
 
-namespace App\Acme\AccountBundle\Controller\Admin;
+namespace SDRO\AccountBundle\Controller\Admin;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\Request;

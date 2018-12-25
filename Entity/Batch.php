@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -10,7 +10,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints as DoctrineAssert;
  * Description of Domain
  * @ORM\HasLifecycleCallbacks 
  * @ORM\Entity
- * @ORM\Entity(repositoryClass="App\Acme\AccountBundle\Entity\AccountRepository")
+ * @ORM\Entity(repositoryClass="SDRO\AccountBundle\Entity\AccountRepository")
  * @DoctrineAssert\UniqueEntity(fields="code", message="Duplicate ACCOUNT TITLE already added.") 
  * #DoctrineAssert\UniqueEntity(fields={"first_account", "first_cr", "second_account"}, message="Duplicate ACCOUNT TITLE already added.")
  * @ORM\Table(name="account__batch")
@@ -156,11 +156,11 @@ class Batch {
     /**
      * Set firstAccount
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $firstAccount
+     * @param \SDRO\AccountBundle\Entity\Account $firstAccount
      *
      * @return Batch
      */
-    public function setFirstAccount(\App\Acme\AccountBundle\Entity\Account $firstAccount = null) {
+    public function setFirstAccount(\SDRO\AccountBundle\Entity\Account $firstAccount = null) {
         $this->first_account = $firstAccount;
 
         return $this;
@@ -169,7 +169,7 @@ class Batch {
     /**
      * Get firstAccount
      *
-     * @return \App\Acme\AccountBundle\Entity\Account
+     * @return \SDRO\AccountBundle\Entity\Account
      */
     public function getFirstAccount() {
         return $this->first_account;
@@ -178,11 +178,11 @@ class Batch {
     /**
      * Set secondAccount
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $secondAccount
+     * @param \SDRO\AccountBundle\Entity\Account $secondAccount
      *
      * @return Batch
      */
-    public function setSecondAccount(\App\Acme\AccountBundle\Entity\Account $secondAccount = null) {
+    public function setSecondAccount(\SDRO\AccountBundle\Entity\Account $secondAccount = null) {
         $this->second_account = $secondAccount;
 
         return $this;
@@ -191,7 +191,7 @@ class Batch {
     /**
      * Get secondAccount
      *
-     * @return \App\Acme\AccountBundle\Entity\Account
+     * @return \SDRO\AccountBundle\Entity\Account
      */
     public function getSecondAccount() {
         return $this->second_account;
@@ -200,11 +200,11 @@ class Batch {
     /**
      * Set refBatch
      *
-     * @param \App\Acme\AccountBundle\Entity\Batch $refBatch
+     * @param \SDRO\AccountBundle\Entity\Batch $refBatch
      *
      * @return Batch
      */
-    public function setRefBatch(\App\Acme\AccountBundle\Entity\Batch $refBatch = null) {
+    public function setRefBatch(\SDRO\AccountBundle\Entity\Batch $refBatch = null) {
         $this->ref_batch = $refBatch;
 
         return $this;
@@ -213,7 +213,7 @@ class Batch {
     /**
      * Get refBatch
      *
-     * @return \App\Acme\AccountBundle\Entity\Batch
+     * @return \SDRO\AccountBundle\Entity\Batch
      */
     public function getRefBatch() {
         return $this->ref_batch;
@@ -222,11 +222,11 @@ class Batch {
     /**
      * Add ledger
      *
-     * @param \App\Acme\AccountBundle\Entity\Ledger $ledger
+     * @param \SDRO\AccountBundle\Entity\Ledger $ledger
      *
      * @return Batch
      */
-    public function addLedger(\App\Acme\AccountBundle\Entity\Ledger $ledger) {
+    public function addLedger(\SDRO\AccountBundle\Entity\Ledger $ledger) {
         $this->ledger[] = $ledger;
 
         return $this;
@@ -235,9 +235,9 @@ class Batch {
     /**
      * Remove ledger
      *
-     * @param \App\Acme\AccountBundle\Entity\Ledger $ledger
+     * @param \SDRO\AccountBundle\Entity\Ledger $ledger
      */
-    public function removeLedger(\App\Acme\AccountBundle\Entity\Ledger $ledger) {
+    public function removeLedger(\SDRO\AccountBundle\Entity\Ledger $ledger) {
         $this->ledger->removeElement($ledger);
     }
 

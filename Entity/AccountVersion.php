@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -109,11 +109,11 @@ class Group {
     /**
      * Add accountGroup
      *
-     * @param \App\Acme\AccountBundle\Entity\AccountGroup $accountGroup
+     * @param \SDRO\AccountBundle\Entity\AccountGroup $accountGroup
      *
      * @return Group
      */
-    public function addAccountGroup(\App\Acme\AccountBundle\Entity\AccountGroup $accountGroup) {
+    public function addAccountGroup(\SDRO\AccountBundle\Entity\AccountGroup $accountGroup) {
         $accountGroup->setAccount($this);
 
         $this->account_group[] = $accountGroup;
@@ -124,9 +124,9 @@ class Group {
     /**
      * Remove accountGroup
      *
-     * @param \App\Acme\AccountBundle\Entity\AccountGroup $accountGroup
+     * @param \SDRO\AccountBundle\Entity\AccountGroup $accountGroup
      */
-    public function removeAccountGroup(\App\Acme\AccountBundle\Entity\AccountGroup $accountGroup) {
+    public function removeAccountGroup(\SDRO\AccountBundle\Entity\AccountGroup $accountGroup) {
         $this->account_group->removeElement($accountGroup);
     }
 
@@ -142,11 +142,11 @@ class Group {
     /**
      * Add reportIndex
      *
-     * @param \App\Acme\AccountBundle\Entity\ReportIndex $reportIndex
+     * @param \SDRO\AccountBundle\Entity\ReportIndex $reportIndex
      *
      * @return Group
      */
-    public function addReportIndex(\App\Acme\AccountBundle\Entity\ReportIndex $reportIndex) {
+    public function addReportIndex(\SDRO\AccountBundle\Entity\ReportIndex $reportIndex) {
         $this->report_index[] = $reportIndex;
 
         return $this;
@@ -155,9 +155,9 @@ class Group {
     /**
      * Remove reportIndex
      *
-     * @param \App\Acme\AccountBundle\Entity\ReportIndex $reportIndex
+     * @param \SDRO\AccountBundle\Entity\ReportIndex $reportIndex
      */
-    public function removeReportIndex(\App\Acme\AccountBundle\Entity\ReportIndex $reportIndex) {
+    public function removeReportIndex(\SDRO\AccountBundle\Entity\ReportIndex $reportIndex) {
         $this->report_index->removeElement($reportIndex);
     }
 

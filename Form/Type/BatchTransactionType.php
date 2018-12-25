@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Form\Type;
+namespace SDRO\AccountBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -23,7 +23,7 @@ class BatchTransactionType extends AbstractType {
                         return $er->createQueryBuilder('a')
                                 ->innerJoin('a.account_head', 'ah')
                                 ->where('ah.code IN  (:ah)')
-                                ->setParameter("ah", \App\Acme\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_CASH_BANK);  //'select only account type query'
+                                ->setParameter("ah", \SDRO\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_CASH_BANK);  //'select only account type query'
                     }))
                 ->add('first_cr')
                 ->add('first_amount', 'text', array(
@@ -39,7 +39,7 @@ class BatchTransactionType extends AbstractType {
                         return $er->createQueryBuilder('a')
                                 ->innerJoin('a.account_head', 'ah')
                                 ->where('ah.code NOT IN (:ah)')
-                                ->setParameter("ah", \App\Acme\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_CASH_BANK);  //'select only account type query'
+                                ->setParameter("ah", \SDRO\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_CASH_BANK);  //'select only account type query'
                     }))
                 ->add('second_cr')
                 ->add('description', 'text', array(
@@ -57,7 +57,7 @@ class BatchTransactionType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Acme\AccountBundle\Entity\Batch'
+            'data_class' => 'SDRO\AccountBundle\Entity\Batch'
         ));
     }
 

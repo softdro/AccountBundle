@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Acme\AccountBundle\Admin;
+namespace SDRO\AccountBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use App\Acme\CoreBundle\Model\Type;
-use App\Acme\CoreBundle\Model\Status;
+use SDRO\CoreBundle\Model\Type;
+use SDRO\CoreBundle\Model\Status;
 
 class BatchAdmin extends Admin {
 

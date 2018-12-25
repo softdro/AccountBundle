@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Form;
+namespace SDRO\AccountBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,7 +22,7 @@ class LedgerType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Acme\AccountBundle\Entity\Ledger'
+            'data_class' => 'SDRO\AccountBundle\Entity\Ledger'
         ));
     }
 

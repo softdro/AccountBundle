@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Acme\AccountBundle\Admin;
+namespace SDRO\AccountBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use App\Acme\CoreBundle\Model\Type;
+use SDRO\CoreBundle\Model\Type;
 
 class InvoiceAdmin extends Admin {
 
@@ -53,11 +53,11 @@ class InvoiceAdmin extends Admin {
 
         $formMapper
 //                ->add('account', 'entity', array(
-//                    'class' => 'App\Acme\AccountBundle\Entity\Account',), array('admin_code' => 'acme.account.admin.account'))
+//                    'class' => 'SDRO\AccountBundle\Entity\Account',), array('admin_code' => 'acme.account.admin.account'))
 //                ->add('account', 'sonata_type_model', array(
 //                    'query' => $query,
 //                    'required' => true,
-//                    'targetEntity' => 'App\Acme\AccountBundle\Entity\Account',
+//                    'targetEntity' => 'SDRO\AccountBundle\Entity\Account',
 //                    'admin_code' => 'acme.person.admin.account'
 ////                    'empty_value' => '-- select one --',
 //                ))
@@ -66,7 +66,7 @@ class InvoiceAdmin extends Admin {
                 ->add('title', null, array('label'=>'Invoice Number','required' => true, 'attr' => array('placeholder' => 'Invoice Number')))
                 ->add('note', null, array('required' => false))
                 ->add('discount')
-                ->add('discount_type','choice',array('choices'=>  App\Acme\CoreBundle\Model\Type::getDiscountTypes()))
+                ->add('discount_type','choice',array('choices'=>  SDRO\CoreBundle\Model\Type::getDiscountTypes()))
                 ->add('vat')
                 ->add('amount')
                 ->add('due')

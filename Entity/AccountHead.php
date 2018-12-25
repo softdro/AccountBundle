@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -109,11 +109,11 @@ class AccountHead {
     /**
      * Add account
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $account
+     * @param \SDRO\AccountBundle\Entity\Account $account
      *
      * @return AccountHead
      */
-    public function addAccount(\App\Acme\AccountBundle\Entity\Account $account)
+    public function addAccount(\SDRO\AccountBundle\Entity\Account $account)
     {
         $this->account[] = $account;
 
@@ -123,9 +123,9 @@ class AccountHead {
     /**
      * Remove account
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $account
+     * @param \SDRO\AccountBundle\Entity\Account $account
      */
-    public function removeAccount(\App\Acme\AccountBundle\Entity\Account $account)
+    public function removeAccount(\SDRO\AccountBundle\Entity\Account $account)
     {
         $this->account->removeElement($account);
     }

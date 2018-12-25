@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Tests\Controller;
+namespace SDRO\AccountBundle\Tests\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 

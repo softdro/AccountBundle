@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Acme\AccountBundle\Controller\Admin;
+namespace SDRO\AccountBundle\Controller\Admin;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 //use Sonata\AdminBundle\Controller\CRUDController as Controller;
-//use App\Acme\AccountBundle\Controller\Admin\AccountAdminController as Controller;
+//use SDRO\AccountBundle\Controller\Admin\AccountAdminController as Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -13,14 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use App\Acme\AccountBundle\Entity\Account;
-use App\Acme\AccountBundle\Form\AccountType;
+use SDRO\AccountBundle\Entity\Account;
+use SDRO\AccountBundle\Form\AccountType;
 use Doctrine\Common\Collections\ArrayCollection;
-use App\Acme\CoreBundle\Model\Type;
-use App\Acme\AccountBundle\Model\Accounts;
-use App\Acme\AccountBundle\Model\AccountUtil;
+use SDRO\CoreBundle\Model\Type;
+use SDRO\AccountBundle\Model\Accounts;
+use SDRO\AccountBundle\Model\AccountUtil;
 use Symfony\Component\Form\Forms;
-use App\Acme\AccountBundle\Form\BatchType;
+use SDRO\AccountBundle\Form\BatchType;
 
 /**
  * Account controller.
@@ -280,7 +280,7 @@ class ReportsController extends Controller {
 //        }
 //
 //        $entity = new Account();
-//        $map = new \App\Acme\AccountBundle\Entity\AccountMapping();
+//        $map = new \SDRO\AccountBundle\Entity\AccountMapping();
 ////        $entity->getAccountMapping()->add($map);
 //
 //        $form = $this->createCreateForm($entity);

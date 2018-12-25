@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\DependencyInjection;
+namespace SDRO\AccountBundle\DependencyInjection;
 
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\Config\FileLocator;

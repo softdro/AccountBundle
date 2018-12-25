@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -59,11 +59,11 @@ class AccountGroup {
     /**
      * Set accounts
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $accounts
+     * @param \SDRO\AccountBundle\Entity\Account $accounts
      *
      * @return AccountGroup
      */
-    public function setAccounts(\App\Acme\AccountBundle\Entity\Account $accounts = null) {
+    public function setAccounts(\SDRO\AccountBundle\Entity\Account $accounts = null) {
         $this->accounts = $accounts;
 
         return $this;
@@ -72,7 +72,7 @@ class AccountGroup {
     /**
      * Get accounts
      *
-     * @return \App\Acme\AccountBundle\Entity\Account
+     * @return \SDRO\AccountBundle\Entity\Account
      */
     public function getAccounts() {
         return $this->accounts;
@@ -81,11 +81,11 @@ class AccountGroup {
     /**
      * Set groups
      *
-     * @param \App\Acme\AccountBundle\Entity\Group $groups
+     * @param \SDRO\AccountBundle\Entity\Group $groups
      *
      * @return AccountGroup
      */
-    public function setGroups(\App\Acme\AccountBundle\Entity\Group $groups = null) {
+    public function setGroups(\SDRO\AccountBundle\Entity\Group $groups = null) {
         $this->groups = $groups;
 
         return $this;
@@ -94,7 +94,7 @@ class AccountGroup {
     /**
      * Get groups
      *
-     * @return \App\Acme\AccountBundle\Entity\Group
+     * @return \SDRO\AccountBundle\Entity\Group
      */
     public function getGroups() {
         return $this->groups;

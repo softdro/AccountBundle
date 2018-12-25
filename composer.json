@@ -4,7 +4,7 @@
     "license": "MIT",
     "description": "Softdro Account bundle for Symfony 4",
     "keywords": [
-        "symfony SoftdroAccountBundle",
+        "symfony SDROAccountBundle",
         "transaction",
         "balance"
     ],
@@ -16,7 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "Softdro\\AccountBundle\\": ""
+            "SDRO\\AccountBundle\\": ""
         }
     },
     "require": {

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Acme\AccountBundle\Controller\Admin;
+namespace SDRO\AccountBundle\Controller\Admin;
 
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 //use Sonata\AdminBundle\Controller\CRUDController as Controller;
-//use App\Acme\AccountBundle\Controller\Admin\AccountAdminController as Controller;
+//use SDRO\AccountBundle\Controller\Admin\AccountAdminController as Controller;
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Sonata\AdminBundle\Route\RouteCollection;
@@ -13,14 +13,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use App\Acme\AccountBundle\Entity\Account;
-use App\Acme\AccountBundle\Form\AccountType;
+use SDRO\AccountBundle\Entity\Account;
+use SDRO\AccountBundle\Form\AccountType;
 use Doctrine\Common\Collections\ArrayCollection;
-use App\Acme\CoreBundle\Model\Type;
-use App\Acme\AccountBundle\Model\Accounts;
-use App\Acme\AccountBundle\Model\AccountUtil;
+use SDRO\CoreBundle\Model\Type;
+use SDRO\AccountBundle\Model\Accounts;
+use SDRO\AccountBundle\Model\AccountUtil;
 use Symfony\Component\Form\Forms;
-use App\Acme\AccountBundle\Form\BatchType;
+use SDRO\AccountBundle\Form\BatchType;
 
 /**
  * Account controller.
@@ -61,12 +61,12 @@ class AccountsController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $accObj = new Accounts($em);
 
-        $batch = new \App\Acme\AccountBundle\Entity\Batch();
+        $batch = new \SDRO\AccountBundle\Entity\Batch();
 //        $ah = AccountUtil::ACCOUNT_HEAD_CASH_BANK;
 //        $firstAccount = $accObj->getAccountByHead($ah);
 //        $entity->setFirstAccount($firstAccount);
 
-        $form = $this->createForm(new \App\Acme\AccountBundle\Form\Type\BatchTransactionType(), $batch, array(
+        $form = $this->createForm(new \SDRO\AccountBundle\Form\Type\BatchTransactionType(), $batch, array(
             'action' => $this->generateUrl('admin_acme_account_accounts_payment'),
             'method' => 'POST',
         ));
@@ -156,12 +156,12 @@ class AccountsController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $accObj = new Accounts($em);
 
-        $entity = new \App\Acme\AccountBundle\Entity\ShareAccount();
+        $entity = new \SDRO\AccountBundle\Entity\ShareAccount();
 //        $ah = AccountUtil::ACCOUNT_HEAD_CASH_BANK;
 //        $firstAccount = $accObj->getAccountByHead($ah);
 //        $entity->setFirstAccount($firstAccount);
 
-        $form = $this->createForm(new \App\Acme\AccountBundle\Form\Type\InvestmentType(), $entity, array(
+        $form = $this->createForm(new \SDRO\AccountBundle\Form\Type\InvestmentType(), $entity, array(
             'action' => $this->generateUrl('admin_acme_account_accounts_investment'),
             'method' => 'POST',
             'empty_data' => ' ',
@@ -187,7 +187,7 @@ class AccountsController extends Controller {
 
             $sec_acc = $em->getRepository("AppAcmeAccountBundle:Account")->findOneBy(array('code' => AccountUtil::CODE_OWNERS_CAPITAL));
 //            throw new \Exception($sec_acc);
-            $batch = new \App\Acme\AccountBundle\Entity\Batch();
+            $batch = new \SDRO\AccountBundle\Entity\Batch();
             $batch->setFirstAccount($form['payment']->getData());
             $batch->setFirstCr(FALSE);
             $batch->setSecondAccount($sec_acc);
@@ -217,21 +217,21 @@ class AccountsController extends Controller {
         if ($acc) {
             $entity = $em->getRepository('AppAcmeAccountBundle:ShareAccount')->findOneBy(array('account' => $acc));
         } else {
-            $entity = new \App\Acme\AccountBundle\Entity\ShareAccount();
+            $entity = new \SDRO\AccountBundle\Entity\ShareAccount();
             $entity->setInvestment(0);
             $entity->setPercentage(0);
         }
 //        throw new \Exception(sizeof($entity));
         $previous = '0';
         if (sizeof($entity) < 1) {
-            $entity = new \App\Acme\AccountBundle\Entity\ShareAccount();
+            $entity = new \SDRO\AccountBundle\Entity\ShareAccount();
             $entity->setAccount($acc);
             $entity->setInvestment(0);
         } else {
             $previous = $entity->getInvestment();
         }
 
-        $form = $this->createForm(new \App\Acme\AccountBundle\Form\Type\InvestmentType(), $entity, array(
+        $form = $this->createForm(new \SDRO\AccountBundle\Form\Type\InvestmentType(), $entity, array(
             'action' => $this->generateUrl('admin_acme_account_accounts_investment'),
             'method' => 'POST',
             'empty_data' => $previous,
@@ -256,12 +256,12 @@ class AccountsController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $accObj = new Accounts($em);
 
-        $batch = new \App\Acme\AccountBundle\Entity\Batch();
+        $batch = new \SDRO\AccountBundle\Entity\Batch();
 //        $ah = AccountUtil::ACCOUNT_HEAD_CASH_BANK;
 //        $firstAccount = $accObj->getAccountByHead($ah);
 //        $entity->setFirstAccount($firstAccount);
 
-        $form = $this->createForm(new \App\Acme\AccountBundle\Form\Type\BatchTransferType(), $batch, array(
+        $form = $this->createForm(new \SDRO\AccountBundle\Form\Type\BatchTransferType(), $batch, array(
             'action' => $this->generateUrl('admin_acme_account_accounts_payment'),
             'method' => 'POST',
         ));
@@ -413,7 +413,7 @@ class AccountsController extends Controller {
 //        }
 //
 //        $entity = new Account();
-//        $map = new \App\Acme\AccountBundle\Entity\AccountMapping();
+//        $map = new \SDRO\AccountBundle\Entity\AccountMapping();
 ////        $entity->getAccountMapping()->add($map);
 //
 //        $form = $this->createCreateForm($entity);

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Form;
+namespace SDRO\AccountBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +17,7 @@ class InvoiceType extends AbstractType {
                 ->add('title', null, array('label' => 'Invoice Number', 'required' => false))
                 ->add('note')
                 ->add('discount')
-                ->add('discount_type', 'choice', array('choices' => App\Acme\CoreBundle\Model\Type::getDiscountTypes()))
+                ->add('discount_type', 'choice', array('choices' => SDRO\CoreBundle\Model\Type::getDiscountTypes()))
                 ->add('vat')
                 ->add('amount')
                 ->add('due')
@@ -34,7 +34,7 @@ class InvoiceType extends AbstractType {
 //                        return $er->createQueryBuilder('a')
 //                                ->leftJoin('a.account_head', 'ah')
 //                                ->where('ah.code = :ah')
-//                                ->setParameter("ah", \App\Acme\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_CASH_BANK)
+//                                ->setParameter("ah", \SDRO\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_CASH_BANK)
 //                        ;
 //                    }))
                 ->add('sales')
@@ -46,7 +46,7 @@ class InvoiceType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Acme\AccountBundle\Entity\Invoice'
+            'data_class' => 'SDRO\AccountBundle\Entity\Invoice'
         ));
     }
 

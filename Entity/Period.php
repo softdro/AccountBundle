@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -171,11 +171,11 @@ class Period {
     /**
      * Add ledger
      *
-     * @param \App\Acme\AccountBundle\Entity\Ledger $ledger
+     * @param \SDRO\AccountBundle\Entity\Ledger $ledger
      *
      * @return Period
      */
-    public function addLedger(\App\Acme\AccountBundle\Entity\Ledger $ledger)
+    public function addLedger(\SDRO\AccountBundle\Entity\Ledger $ledger)
     {
         $this->ledger[] = $ledger;
 
@@ -185,9 +185,9 @@ class Period {
     /**
      * Remove ledger
      *
-     * @param \App\Acme\AccountBundle\Entity\Ledger $ledger
+     * @param \SDRO\AccountBundle\Entity\Ledger $ledger
      */
-    public function removeLedger(\App\Acme\AccountBundle\Entity\Ledger $ledger)
+    public function removeLedger(\SDRO\AccountBundle\Entity\Ledger $ledger)
     {
         $this->ledger->removeElement($ledger);
     }

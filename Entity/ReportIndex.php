@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -127,11 +127,11 @@ class ReportIndex {
     /**
      * Set report
      *
-     * @param \App\Acme\AccountBundle\Entity\Report $report
+     * @param \SDRO\AccountBundle\Entity\Report $report
      *
      * @return ReportIndex
      */
-    public function setReport(\App\Acme\AccountBundle\Entity\Report $report = null)
+    public function setReport(\SDRO\AccountBundle\Entity\Report $report = null)
     {
         $this->report = $report;
 
@@ -141,7 +141,7 @@ class ReportIndex {
     /**
      * Get report
      *
-     * @return \App\Acme\AccountBundle\Entity\Report
+     * @return \SDRO\AccountBundle\Entity\Report
      */
     public function getReport()
     {
@@ -151,11 +151,11 @@ class ReportIndex {
     /**
      * Set account
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $account
+     * @param \SDRO\AccountBundle\Entity\Account $account
      *
      * @return ReportIndex
      */
-    public function setAccount(\App\Acme\AccountBundle\Entity\Account $account = null)
+    public function setAccount(\SDRO\AccountBundle\Entity\Account $account = null)
     {
         $this->account = $account;
 
@@ -165,7 +165,7 @@ class ReportIndex {
     /**
      * Get account
      *
-     * @return \App\Acme\AccountBundle\Entity\Account
+     * @return \SDRO\AccountBundle\Entity\Account
      */
     public function getAccount()
     {
@@ -175,11 +175,11 @@ class ReportIndex {
     /**
      * Set accountHead
      *
-     * @param \App\Acme\AccountBundle\Entity\AccountHead $accountHead
+     * @param \SDRO\AccountBundle\Entity\AccountHead $accountHead
      *
      * @return ReportIndex
      */
-    public function setAccountHead(\App\Acme\AccountBundle\Entity\AccountHead $accountHead = null)
+    public function setAccountHead(\SDRO\AccountBundle\Entity\AccountHead $accountHead = null)
     {
         $this->account_head = $accountHead;
 
@@ -189,7 +189,7 @@ class ReportIndex {
     /**
      * Get accountHead
      *
-     * @return \App\Acme\AccountBundle\Entity\AccountHead
+     * @return \SDRO\AccountBundle\Entity\AccountHead
      */
     public function getAccountHead()
     {
@@ -199,11 +199,11 @@ class ReportIndex {
     /**
      * Set groups
      *
-     * @param \App\Acme\AccountBundle\Entity\Group $groups
+     * @param \SDRO\AccountBundle\Entity\Group $groups
      *
      * @return ReportIndex
      */
-    public function setGroups(\App\Acme\AccountBundle\Entity\Group $groups = null)
+    public function setGroups(\SDRO\AccountBundle\Entity\Group $groups = null)
     {
         $this->groups = $groups;
 
@@ -213,7 +213,7 @@ class ReportIndex {
     /**
      * Get groups
      *
-     * @return \App\Acme\AccountBundle\Entity\Group
+     * @return \SDRO\AccountBundle\Entity\Group
      */
     public function getGroups()
     {

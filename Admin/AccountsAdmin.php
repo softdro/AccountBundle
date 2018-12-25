@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Acme\AccountBundle\Admin;
+namespace SDRO\AccountBundle\Admin;
 
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
-use App\Acme\CoreBundle\Model\Type;
-use App\Acme\CoreBundle\Model\Status;
+use SDRO\CoreBundle\Model\Type;
+use SDRO\CoreBundle\Model\Status;
 
 //use Sonata\AdminBundle\Admin\AbstractAdmin; // sort
 
@@ -64,12 +64,12 @@ class AccountsAdmin extends Admin {
 //                    'multiple' => true,
 //                    'by_reference' => false,
 //                    'btn_add' => false,
-////                    'targetEntity' => 'App\Acme\AccountBundle\Entity\Account',
+////                    'targetEntity' => 'SDRO\AccountBundle\Entity\Account',
 ////                    'admin_code' => 'acme.account.admin.account',
 //                    'empty_value' => '-- select one --',
 //                ))
                 ->add('code')
-//                ->add('parent', 'sonata_type_model',array( 'targetEntity' => 'App\Acme\AccountBundle\Entity\Account','admin_code' => 'acme.account.admin.accounts'))
+//                ->add('parent', 'sonata_type_model',array( 'targetEntity' => 'SDRO\AccountBundle\Entity\Account','admin_code' => 'acme.account.admin.accounts'))
                 ->add('isAsset')
                 ->add('enable')
                 ->end()

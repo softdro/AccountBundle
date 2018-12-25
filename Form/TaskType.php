@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Acme\AccountBundle\Form;
+namespace SDRO\AccountBundle\Form;
 
-use App\Acme\AccountBundle\Entity\Task;
+use SDRO\AccountBundle\Entity\Task;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use App\Acme\AccountBundle\Form\TagType;
+use SDRO\AccountBundle\Form\TagType;
 
 class TaskType extends AbstractType {
 
@@ -39,7 +39,7 @@ class TaskType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Acme\AccountBundle\Entity\Task'
+            'data_class' => 'SDRO\AccountBundle\Entity\Task'
         ));
     }
 

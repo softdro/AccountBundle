@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -79,11 +79,11 @@ class Report {
     /**
      * Add reportIndex
      *
-     * @param \App\Acme\AccountBundle\Entity\ReportIndex $reportIndex
+     * @param \SDRO\AccountBundle\Entity\ReportIndex $reportIndex
      *
      * @return Report
      */
-    public function addReportIndex(\App\Acme\AccountBundle\Entity\ReportIndex $reportIndex) {
+    public function addReportIndex(\SDRO\AccountBundle\Entity\ReportIndex $reportIndex) {
         $this->report_index[] = $reportIndex;
 
         return $this;
@@ -92,9 +92,9 @@ class Report {
     /**
      * Remove reportIndex
      *
-     * @param \App\Acme\AccountBundle\Entity\ReportIndex $reportIndex
+     * @param \SDRO\AccountBundle\Entity\ReportIndex $reportIndex
      */
-    public function removeReportIndex(\App\Acme\AccountBundle\Entity\ReportIndex $reportIndex) {
+    public function removeReportIndex(\SDRO\AccountBundle\Entity\ReportIndex $reportIndex) {
         $this->report_index->removeElement($reportIndex);
     }
 

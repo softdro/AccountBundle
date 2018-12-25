@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Form\Type;
+namespace SDRO\AccountBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -28,7 +28,7 @@ class InvestmentType extends AbstractType {
                         return $er->createQueryBuilder('a')
                                 ->innerJoin('a.account_head', 'ah')
                                 ->where('ah.code IN  (:ah)')
-                                ->setParameter("ah", \App\Acme\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_INVESTMENT);  //'select only account type query'
+                                ->setParameter("ah", \SDRO\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_INVESTMENT);  //'select only account type query'
                     }))
                 ->add('investment')
                 ->add('percentage', null, array('required' => true, 'label' => 'Total Percentage (%)'))
@@ -46,7 +46,7 @@ class InvestmentType extends AbstractType {
                         return $er->createQueryBuilder('a')
                                 ->innerJoin('a.account_head', 'ah')
                                 ->where('ah.code IN  (:ah)')
-                                ->setParameter("ah", \App\Acme\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_CASH_BANK);
+                                ->setParameter("ah", \SDRO\AccountBundle\Model\AccountUtil::ACCOUNT_HEAD_CASH_BANK);
                     }))
         ;
     }
@@ -56,7 +56,7 @@ class InvestmentType extends AbstractType {
      */
     public function setDefaultOptions(OptionsResolverInterface $resolver) {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Acme\AccountBundle\Entity\ShareAccount'
+            'data_class' => 'SDRO\AccountBundle\Entity\ShareAccount'
         ));
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -54,11 +54,11 @@ class InvoiceLedger {
     /**
      * Set invoice
      *
-     * @param \App\Acme\AccountBundle\Entity\Invoice $invoice
+     * @param \SDRO\AccountBundle\Entity\Invoice $invoice
      *
      * @return InvoiceLedger
      */
-    public function setInvoice(\App\Acme\AccountBundle\Entity\Invoice $invoice = null)
+    public function setInvoice(\SDRO\AccountBundle\Entity\Invoice $invoice = null)
     {
         $this->invoice = $invoice;
 
@@ -68,7 +68,7 @@ class InvoiceLedger {
     /**
      * Get invoice
      *
-     * @return \App\Acme\AccountBundle\Entity\Invoice
+     * @return \SDRO\AccountBundle\Entity\Invoice
      */
     public function getInvoice()
     {
@@ -78,11 +78,11 @@ class InvoiceLedger {
     /**
      * Set ledger
      *
-     * @param \App\Acme\AccountBundle\Entity\Ledger $ledger
+     * @param \SDRO\AccountBundle\Entity\Ledger $ledger
      *
      * @return InvoiceLedger
      */
-    public function setLedger(\App\Acme\AccountBundle\Entity\Ledger $ledger = null)
+    public function setLedger(\SDRO\AccountBundle\Entity\Ledger $ledger = null)
     {
         $this->ledger = $ledger;
 
@@ -92,7 +92,7 @@ class InvoiceLedger {
     /**
      * Get ledger
      *
-     * @return \App\Acme\AccountBundle\Entity\Ledger
+     * @return \SDRO\AccountBundle\Entity\Ledger
      */
     public function getLedger()
     {

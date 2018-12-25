@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -80,7 +80,7 @@ class Invoice {
     protected $invoice_ledger;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Acme\SalesBundle\Entity\Sales", mappedBy="invoice", cascade={"persist"})
+     * @ORM\OneToOne(targetEntity="SDRO\SalesBundle\Entity\Sales", mappedBy="invoice", cascade={"persist"})
      */
     protected $sales;
 
@@ -304,11 +304,11 @@ class Invoice {
     /**
      * Set account
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $account
+     * @param \SDRO\AccountBundle\Entity\Account $account
      *
      * @return Invoice
      */
-    public function setAccount(\App\Acme\AccountBundle\Entity\Account $account = null) {
+    public function setAccount(\SDRO\AccountBundle\Entity\Account $account = null) {
         $this->account = $account;
 
         return $this;
@@ -317,7 +317,7 @@ class Invoice {
     /**
      * Get account
      *
-     * @return \App\Acme\AccountBundle\Entity\Account
+     * @return \SDRO\AccountBundle\Entity\Account
      */
     public function getAccount() {
         return $this->account;
@@ -326,11 +326,11 @@ class Invoice {
     /**
      * Add invoiceLedger
      *
-     * @param \App\Acme\AccountBundle\Entity\InvoiceLedger $invoiceLedger
+     * @param \SDRO\AccountBundle\Entity\InvoiceLedger $invoiceLedger
      *
      * @return Invoice
      */
-    public function addInvoiceLedger(\App\Acme\AccountBundle\Entity\InvoiceLedger $invoiceLedger) {
+    public function addInvoiceLedger(\SDRO\AccountBundle\Entity\InvoiceLedger $invoiceLedger) {
         $this->invoice_ledger[] = $invoiceLedger;
 
         return $this;
@@ -339,9 +339,9 @@ class Invoice {
     /**
      * Remove invoiceLedger
      *
-     * @param \App\Acme\AccountBundle\Entity\InvoiceLedger $invoiceLedger
+     * @param \SDRO\AccountBundle\Entity\InvoiceLedger $invoiceLedger
      */
-    public function removeInvoiceLedger(\App\Acme\AccountBundle\Entity\InvoiceLedger $invoiceLedger) {
+    public function removeInvoiceLedger(\SDRO\AccountBundle\Entity\InvoiceLedger $invoiceLedger) {
         $this->invoice_ledger->removeElement($invoiceLedger);
     }
 
@@ -358,11 +358,11 @@ class Invoice {
     /**
      * Set sales
      *
-     * @param \App\Acme\SalesBundle\Entity\Sales $sales
+     * @param \SDRO\SalesBundle\Entity\Sales $sales
      *
      * @return Invoice
      */
-    public function setSales(\App\Acme\SalesBundle\Entity\Sales $sales = null)
+    public function setSales(\SDRO\SalesBundle\Entity\Sales $sales = null)
     {
         $this->sales = $sales;
 
@@ -372,7 +372,7 @@ class Invoice {
     /**
      * Get sales
      *
-     * @return \App\Acme\SalesBundle\Entity\Sales
+     * @return \SDRO\SalesBundle\Entity\Sales
      */
     public function getSales()
     {

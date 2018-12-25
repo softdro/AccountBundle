@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Model;
+namespace SDRO\AccountBundle\Model;
 
 class AccountUtil {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -108,11 +108,11 @@ class ShareAccount {
     /**
      * Set account
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $account
+     * @param \SDRO\AccountBundle\Entity\Account $account
      *
      * @return ShareAccount
      */
-    public function setAccount(\App\Acme\AccountBundle\Entity\Account $account = null)
+    public function setAccount(\SDRO\AccountBundle\Entity\Account $account = null)
     {
         $this->account = $account;
 
@@ -122,7 +122,7 @@ class ShareAccount {
     /**
      * Get account
      *
-     * @return \App\Acme\AccountBundle\Entity\Account
+     * @return \SDRO\AccountBundle\Entity\Account
      */
     public function getAccount()
     {

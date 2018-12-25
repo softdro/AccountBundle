@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Form;
+namespace SDRO\AccountBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,7 +30,7 @@ class BatchType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'App\Acme\AccountBundle\Entity\Batch'
+            'data_class' => 'SDRO\AccountBundle\Entity\Batch'
         ));
     }
 

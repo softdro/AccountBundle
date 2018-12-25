@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Acme\AccountBundle\Entity;
+namespace SDRO\AccountBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validation\Constraints AS Assert;
@@ -189,11 +189,11 @@ class Ledger {
 //    /**
 //     * Set batch
 //     *
-//     * @param \App\Acme\AccountBundle\Entity\Batch $batch
+//     * @param \SDRO\AccountBundle\Entity\Batch $batch
 //     *
 //     * @return Ledger
 //     */
-//    public function setBatch(\App\Acme\AccountBundle\Entity\Batch $batch = null) {
+//    public function setBatch(\SDRO\AccountBundle\Entity\Batch $batch = null) {
 //        $this->batch = $batch;
 //
 //        return $this;
@@ -202,7 +202,7 @@ class Ledger {
 //    /**
 //     * Get batch
 //     *
-//     * @return \App\Acme\AccountBundle\Entity\Batch
+//     * @return \SDRO\AccountBundle\Entity\Batch
 //     */
 //    public function getBatch() {
 //        return $this->batch;
@@ -211,11 +211,11 @@ class Ledger {
     /**
      * Set period
      *
-     * @param \App\Acme\AccountBundle\Entity\Period $period
+     * @param \SDRO\AccountBundle\Entity\Period $period
      *
      * @return Ledger
      */
-    public function setPeriod(\App\Acme\AccountBundle\Entity\Period $period = null) {
+    public function setPeriod(\SDRO\AccountBundle\Entity\Period $period = null) {
         $this->period = $period;
 
         return $this;
@@ -224,7 +224,7 @@ class Ledger {
     /**
      * Get period
      *
-     * @return \App\Acme\AccountBundle\Entity\Period
+     * @return \SDRO\AccountBundle\Entity\Period
      */
     public function getPeriod() {
         return $this->period;
@@ -233,11 +233,11 @@ class Ledger {
     /**
      * Set account
      *
-     * @param \App\Acme\AccountBundle\Entity\Account $account
+     * @param \SDRO\AccountBundle\Entity\Account $account
      *
      * @return Ledger
      */
-    public function setAccount(\App\Acme\AccountBundle\Entity\Account $account = null) {
+    public function setAccount(\SDRO\AccountBundle\Entity\Account $account = null) {
         $this->account = $account;
 
         return $this;
@@ -246,7 +246,7 @@ class Ledger {
     /**
      * Get account
      *
-     * @return \App\Acme\AccountBundle\Entity\Account
+     * @return \SDRO\AccountBundle\Entity\Account
      */
     public function getAccount() {
         return $this->account;
@@ -255,11 +255,11 @@ class Ledger {
     /**
      * Add invoiceLedger
      *
-     * @param \App\Acme\AccountBundle\Entity\InvoiceLedger $invoiceLedger
+     * @param \SDRO\AccountBundle\Entity\InvoiceLedger $invoiceLedger
      *
      * @return Ledger
      */
-    public function addInvoiceLedger(\App\Acme\AccountBundle\Entity\InvoiceLedger $invoiceLedger) {
+    public function addInvoiceLedger(\SDRO\AccountBundle\Entity\InvoiceLedger $invoiceLedger) {
         $this->invoice_ledger[] = $invoiceLedger;
 
         return $this;
@@ -268,9 +268,9 @@ class Ledger {
     /**
      * Remove invoiceLedger
      *
-     * @param \App\Acme\AccountBundle\Entity\InvoiceLedger $invoiceLedger
+     * @param \SDRO\AccountBundle\Entity\InvoiceLedger $invoiceLedger
      */
-    public function removeInvoiceLedger(\App\Acme\AccountBundle\Entity\InvoiceLedger $invoiceLedger) {
+    public function removeInvoiceLedger(\SDRO\AccountBundle\Entity\InvoiceLedger $invoiceLedger) {
         $this->invoice_ledger->removeElement($invoiceLedger);
     }
 
