@@ -16,10 +16,7 @@
     ],
     "autoload": {
         "psr-4": {
-            "SDRO\\AccountBundle\\": "",
-            "SDRO\\": "src/SDRO",
-            "SDRO\\AccountBundle\\": "src/SDRO/AccountBundle",
-            "SDROAccountBundle\\": "src/SDRO/AccountBundle"
+              "SDRO\\": "src/SDRO"
         }
     },
     "require": {
@@ -27,8 +24,6 @@
         "symfony/form": "^2.8 || ^3.0 || ^4.0",
         "symfony/framework-bundle": "^2.8 || ^3.0 || ^4.0",
         "doctrine/orm": "^2.5",
-        "doctrine/doctrine-bundle": "^1.6",
-        "moneyphp/money": "^3.0",
         "symfony/twig-bundle": "^2.8 || ^3.0 || ^4.0",
         "twig/twig": "^1.28 || ^2.0"
     },
