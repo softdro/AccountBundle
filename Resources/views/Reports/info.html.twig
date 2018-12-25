@@ -1,0 +1,160 @@
+{#{% extends "::sonata_layout.html.twig" %}#}
+{% extends '::sonata_standard_layout.html.twig' %}
+{#{% extends base_template %}#}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        .icon{
+            background: #fff;
+            padding: 0;
+            color: #e57373;
+        }
+        .custom-margin{padding: 15px; transition: 0.5s;}
+        /*.custom-margin:hover{border: 1px solid #bbb;}*/
+        .custom-margin:focus{padding: 20px;}
+        .count{
+            font-weight: 700;
+            color: #434a4a;
+            margin: 10px 10px 0 30px;
+        }
+        .content-header{padding: 15px 0 0 0;}
+        {#        .card{margin-top: 20px;}#}
+        .card-body h4{
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
+            padding: 10px 20px 20px 20px;
+        }
+        .card-block  h2{margin: 0 0 20px 12px;}
+        .navbar-nav>li>a{color: #777;}
+        .nav>li>a:hover, .nav>li>a:active, .nav>li>a:focus{background-color: transparent;}
+        {#        canvas{width: 650px !important; height: auto !important;}#}
+    </style>
+{% endblock  %}
+
+{% block title %}
+    List
+{% endblock%}
+
+{% block navbar_title %}
+
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+
+{% endblock %}
+
+{% block list_filters_actions %}
+    {{ include('AcmeAccountBundle:Reports:__tabs.html.twig') }}
+{% endblock %}
+
+{% block form %}
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
+    <div class="container">
+        <div class="card-block-two">
+            <h2>Report</h2>
+            <div class="row">
+                <div class="col-sm-6 col-md-6">
+                    <div class="account">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="icon">
+                                    <h3> <i class="fa fa-database" aria-hidden="true"></i> Income Statement</h3>
+                                </div>
+                                <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                                <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                        <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                        <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card-body collapse in">
+                                {{ include('AcmeAccountBundle:Reports/ajax:income_statement_chart.html.twig') }}
+                            </div>
+                        </div>
+                        {#<div class="icon">
+                            <i class="fa fa-list custom_profile_icon" aria-hidden="true"></i><h4> Lists</h4>
+                        </div>#}
+                    </div>    
+                </div>
+                <div class="col-md-6 col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="icon">
+                                <h4> <i class="fa fa-database" aria-hidden="true"></i> Daily Transaction</h4>
+                            </div>
+                            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body collapse in">
+                            {{ include('AcmeAccountBundle:Reports/ajax:daily_transaction_chart.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="report_history">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="icon">
+                                <h4> <i class="fa fa-database" aria-hidden="true"></i> Recent Transaction Invoice</h4>
+                            </div>
+                            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+                            <div class="heading-elements">
+                                <ul class="list-inline mb-0">
+                                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="card-body collapse in">
+                            <div class="card-block">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">SL.</th>
+                                            <th scope="col">Invoice</th>
+                                            <th scope="col">Customer Name</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Amount</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <th scope="row">1</th>
+                                            <td>180219001</td>
+                                            <td>Mark</td>
+                                            <td>Paid</td>
+                                            <td>$1000</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+{% endblock %}

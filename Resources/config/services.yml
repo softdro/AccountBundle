@@ -1,0 +1,146 @@
+parameters:
+#    acme_business.example.class: Acme\BusinessBundle\Example
+
+
+
+services:
+
+#    accounts_service:
+#        class: App\Acme\AccountBundle\Model\Accounts
+#        arguments: [ @doctrine.orm.entity_manager ] 
+#        calls:
+#             - [setContainer, ["@service_container"]]
+        
+#    acme.account.admin.account:
+#        class: Acme\AccountBundle\Admin\AccountAdmin
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, group: "Setting", label: "Account" }
+#        arguments: [ null, Acme\AccountBundle\Entity\Account, ~ ]
+#        calls:
+#            - [ setTranslationDomain, [AcmeAccountBundle]]  
+                 
+            
+     
+ #================> SETTING  <==================== 
+
+    app.acme.account.admin.batch:
+        class: App\Acme\AccountBundle\Admin\BatchAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Setting", label: "Batch" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\Batch, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            
+    app.acme.account.admin.period:
+        class: App\Acme\AccountBundle\Admin\PeriodAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: "Fiscal Year" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\Period, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]               
+            
+    app.acme.account.admin.report:
+        class: App\Acme\AccountBundle\Admin\ReportAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: " Report" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\Report, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+
+    app.acme.account.admin.report_index:
+        class: App\Acme\AccountBundle\Admin\ReportIndexAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: " Report Index" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\ReportIndex, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            
+    app.acme.account.admin.account_head:
+        class: App\Acme\AccountBundle\Admin\AccountHeadAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: " Account Head" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\AccountHead, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+
+    app.acme.account.admin.group:
+        class: App\Acme\AccountBundle\Admin\GroupAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: "Group" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\Group, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+
+    app.acme.account.admin.account_group:
+        class: App\Acme\AccountBundle\Admin\AccountGroupAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: " Account Group" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\AccountGroup, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            
+    app.acme.account.admin.account:
+        class: App\Acme\AccountBundle\Admin\AccountAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: "Account" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\Account, null]  
+#        arguments: [null,null,null]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+
+#================> ACCOUNT INFO <====================
+            
+#    acme.account.admin.accounts:
+#        class: Acme\AccountBundle\Admin\AccountsAdmin
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, group: "Accounts Info", label: "Accounts Transaction" }
+#        arguments: [ null, Acme\AccountBundle\Entity\Account, AcmeAccountBundle:Admin\Accounts ]  
+#        calls:
+#            - [ setTranslationDomain, [AcmeAccountBundle]]   
+#            - [ setTemplate, [list, AcmeAccountBundle:Account:lists.html.twig]]
+
+    app.acme.account.admin.invoice: 
+        class: App\Acme\AccountBundle\Admin\InvoiceAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Accounts Info", label: "Invoice" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\Invoice, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]       
+
+    app.acme.account.admin.ledger:
+        class: App\Acme\AccountBundle\Admin\LedgerAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Accounts Info", label: "Ledger" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\Ledger, null ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+
+           
+      
+    app.acme.account.admin.reports:
+        class: App\Acme\AccountBundle\Admin\ReportsAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Accounts Info", label: "Reports" }
+        arguments: [ null, App\Acme\AccountBundle\Entity\Report, AppAcmeAccountBundle:Admin\Reports ]
+        calls:
+            - [ setTranslationDomain, [AppAcmeAccountBundle]]
+#            - [ setTemplate, [layout, AcmeAccountBundle::standard_layout.html.twig]]
+            
+                          
+            
+#    acme.account.admin.account:
+#        class: Acme\AccountBundle\Admin\LedgerAdmin
+#        tags:
+#            - { name: sonata.admin, manager_type: orm, group: "Account", label: "Account Info" }
+#        arguments:
+#            - ~
+#            - Acme\AccountBundle\Entity\Ledger
+#            - AcmeEducationBundle:Admin\StudentAdmin
+#            - AcmeAccountBundle:Ledger
+#        calls:
+#            - [ setTranslationDomain, [AcmeAccountBundle]]
+#            - [ setTemplate, [list, AcmeAccountBundle:Ledger:base_list.html.twig]]
+#            - [ setTemplate, [edit, AcmeAccountBundle:Ledger:base_edit.html.twig]]
+#            - [ setTemplate, [info, AcmeAccountBundle:Ledger:list.html.twig]]
+            
+                   

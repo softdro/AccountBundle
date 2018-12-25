@@ -1,0 +1,221 @@
+{% extends '::sonata_standard_layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        form .form-actions{border: none;}
+        .block{display: block;}
+        .icon{
+            background: #fff;
+            padding: 0 25px;
+            color: #e57373;
+        }
+        .custom-margin{margin: 0;padding: 15px 0; transition: 0.5s;}
+        .count{
+            font-weight: 700;
+            color: #434a4a;
+            margin: 10px 10px 0 30px;
+        }
+        {#.fa-credit-card,.fa-check-square,
+        .fa-bandcamp,.custom_profile_icon,.fa-money,.fa-database{
+            font-size: 3rem;
+            margin: 0;
+        }#}
+        .alert .close {margin-right: 13px;}
+        .card-body{padding: 10px 20px;}
+        .card{margin-bottom: 0;margin-top: 20px;}
+        .card h4{
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
+            padding: 10px 20px 20px 20px;
+        }
+        .card-block  h2{margin: 0 0 20px 12px;}
+        .icheckbox_square-blue{display: block;}
+        .content-header{padding:15px 0 0 0;}
+        .sonata-ba-form .nav{display: none;}
+        .navbar-default .navbar-nav > li > a.investment{border-bottom: 3px solid #777;}
+    </style>
+{% endblock  %}
+
+{% block title %}
+    List
+{% endblock%}
+
+{% block navbar_title %} {% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+
+{% endblock %}
+{% block list_filters_actions %}
+    {{ include('AcmeAccountBundle:Account:__tabs.html.twig') }}
+{% endblock %}
+{% block form %}
+
+    {#<div class="card">
+        <div class="card-body collapse in">
+            <div class="card-block">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>#}
+
+    <div class="card">
+        <div class="card-header">
+            <div class="icon">
+                <p><i class="fa fa-money" aria-hidden="true"></i> INVESTMENT</p>
+            </div>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="container card-body collapse in">
+            {% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
+            <div class="card-block">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            {#                            <div class="custom-margin">#}
+                            <div id="ajax1">
+                                {% include 'AcmeAccountBundle:Account:ajax/_ajaxInvestment.html.twig' %}
+                            </div>
+
+                            {#<div id="ajax">
+                                {{ form_start(form, {'attr': {'id': 'transactionForm'}}) }}
+
+                                <div class="row">
+                                    <div class="col-md-12 error">
+                                        {{ form_errors(form) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-6">
+                                        {{ form_row(form.account, { 'attr': {'class': 'form-control select_account'} }) }}
+                                        <br/>
+                                        {{ form_row(form.amount, { 'attr': {'class': 'form-control'} }) }}
+                                        <br/>
+                                        {{ form_row(form.percentage, { 'attr': {'class': 'form-control'} }) }}
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        {{ form_row(form.investment, { 'attr': {'class': 'form-control', 'readonly': true} }) }}
+                                        <br/>{{ form_row(form.total, { 'attr': {'class': 'form-control', 'readonly': true} }) }}
+                                    </div>
+
+                                </div>
+
+                                <div class="form-actions">
+                                    <button id="transactinBtn" type="submit" class="btn btn-info">
+                                        <i class="icon-check2"></i> Update
+                                    </button>
+                                </div>
+                                <div style="display: none">
+                                    {{ form_rest(form) }}
+                                </div>
+                                {{ form_end(form) }}
+
+                            </div>#}
+
+                            {#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <br/><br/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+
+{#        $(document).ready(function () {#}
+            $(document).on('change', '.select_account', function () {
+                Ordertoggle();
+            });
+
+            function Ordertoggle() {
+{#                alert($(".select_account option:selected").text());#}
+                if ($(".select_account option:selected").text() != "-- select one --") {
+        {#                    alert($(".select_account option:selected").text());#}
+                        ajax1($(".select_account option:selected").val())
+                    } else {
+                        ajax1(0);
+                    }
+
+                }
+
+                Ordertoggle();
+
+                function ajax1(id) {
+{#                    alert(id);#}
+                    var path = "{{ path('admin_acme_account_accounts_ajaxInvestment', { 'id': 'cc'}) }}";
+                    path = path.replace("/cc", "/" + id);
+{#                    alert(path);#}
+                    $.ajax({
+                        type: 'POST',
+                        url: path,
+                        data: {},
+                        success: function (data) {
+                            if (data.status == 'error') {
+                                alert('error handling, show data.message or what you want.');
+                            } else {
+        {#                                alert(data);#}
+                                $('#ajax').html(data);
+                            }
+                        }
+                    });
+                }
+
+                countInputAmount();
+{#            });#}
+
+        {#$(".select_account").change(function () {
+            alert('in');
+            Ordertoggle();
+        });#}
+
+
+                $(document).on('change', '#acme_accountbundle_investment_amount', function () {
+                    countInputAmount();
+                });
+
+                function countInputAmount() {
+
+                    var add = parseInt($('#acme_accountbundle_investment_amount').val());
+                    var pre = parseInt($('#acme_accountbundle_investment_previous').val());
+
+                    if (!add)
+                        add = 0;
+        {#                alert(add);#}
+                $('#acme_accountbundle_investment_investment').val(add + pre);
+
+            }
+
+    </script>
+{% endblock  %}

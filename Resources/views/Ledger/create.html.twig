@@ -1,0 +1,48 @@
+{#{% extends '::base.html.twig' %}#}
+{% extends base_template %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+    </style>
+{% endblock  %}
+
+{% block title %}
+    Account Information
+{% endblock%}
+
+{% block navbar_title %}
+    {#    {{ parent() }}#}
+    {#    {{ block('title') }}#}
+
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+    {#    <li>{% include 'SonataAdminBundle:Button:show_button.html.twig' %}</li>#}
+    {#    <li>{% include 'SonataAdminBundle:Button:history_button.html.twig' %}</li>#}
+    {#    <li>{% include 'SonataAdminBundle:Button:acl_button.html.twig' %}</li>#}
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+        {#    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>#}
+    {% endblock %}
+
+{#{% block tab_menu %} {{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}#}
+
+{#{% use 'AdminSeoBundle:Seo:seolist.html.twig' with form as parentForm %}#}
+
+{% block form %}
+    <h1>Account Information</h1>
+
+    {% include 'AcmeAccountBundle:Ledger:fields.html.twig' %}
+
+    {#    {{ form(form) }}#}
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock  %}

@@ -1,0 +1,87 @@
+{#{% extends '::base.html.twig' %}#}
+{% extends base_template %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        .tab div.expend_btn{border-bottom: 3px solid #378ED7; }
+        .tab div.expend_btn a{color: #0572CD;}
+        #acme_accountbundle_ledger_date_time{display: none;}
+
+        .trns{padding-left: 25px;background-color: #fff; }
+        .trns h2{padding-top: 10px;}
+        .trns h3{margin-bottom: 30px; padding: 8px; background-color: #fea;   background-color: #378ED7; color: #fff; }
+
+        .trns form div{
+            {#            display: inline-block;#}
+            margin: 5px 0;}
+        .trns form div label{display: block;}
+        .trns  #acme_accountbundle_ledger_submit{margin: 0 10px;}
+        .trns .f_trans{visibility: hidden; position: absolute;}
+        
+        cb{font-size: 1.2em; color: #e3d;}
+    </style>
+{% endblock  %}
+
+{% block title %}
+    Account Info
+{% endblock%}
+
+{% block navbar_title %}
+    {#    {{ parent() }}#}
+    {#    {{ block('title') }}#}
+
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+    {#    <li>{% include 'SonataAdminBundle:Button:show_button.html.twig' %}</li>#}
+    {#    <li>{% include 'SonataAdminBundle:Button:history_button.html.twig' %}</li>#}
+    {#    <li>{% include 'SonataAdminBundle:Button:acl_button.html.twig' %}</li>#}
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+        {#    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>#}
+    {% endblock %}
+
+{#{% block tab_menu %} {{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}#}
+
+{#{% use 'AdminSeoBundle:Seo:seolist.html.twig' with form as parentForm %}#}
+
+{% block form %}
+    <div class="trns">
+        <h2 class="robotoThin">Account Info</h2>
+        {% include 'AcmeAccountBundle:Ledger:tab.html.twig' %}
+
+        <br/><br/>
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="notice">{{ flashMessage | raw}}</div>
+        {% endfor %}
+
+        <div >
+            <h3 class="robotoThin">Expenditure Account</h3>
+            {{ form_start(form) }}
+
+            <div class="tabcontent round bgcolor1">
+                <div class="sec">
+                    <div class="f_trans">{{ form_row(form.transaction_type) }}</div>
+                    {{ form_row(form.date) }}
+                    <br/>
+                    {{ form_row(form.expenditure_type) }}
+                    {{ form_row(form.description) }}
+                    {{ form_row(form.debit) }}
+                </div>
+            </div>
+            <br/>
+            {{ form_rest(form) }}
+
+            {{ form_end(form) }}
+
+
+            <br/><br/>
+        </div>
+
+    </div>
+{% endblock %}

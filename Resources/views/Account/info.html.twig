@@ -1,0 +1,153 @@
+{% extends '::sonata_standard_layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        .icon{
+            background: #fff;
+            padding: 0;
+            color: #e57373;
+        }
+        .custom-margin{margin: 0 2px; padding: 15px; transition: 0.5s;border: 1px solid transparent;}
+        .custom-margin:hover{border: 1px solid #bbb;}
+        .custom-margin:focus{padding: 20px;}
+        .count{
+            font-weight: 700;
+            color: #434a4a;
+            margin: 10px 10px 0 30px;
+        }
+        .content-header{padding: 15px 0 0 0;}
+        .card{margin-top: 20px;}
+        {#.fa-credit-card,.fa-check-square,
+        .fa-bandcamp,.custom_profile_icon,.fa-money,.fa-database{
+            font-size: 3rem;
+            margin: 0;
+        }#}
+        {#        .card-body{padding: 50px 20px;}#}
+        .card-body h4{
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
+            padding: 10px 20px 20px 20px;
+        }
+        .card-block  h2{margin: 0 0 20px 12px;}
+        .navbar-nav>li>a{color: #777;}
+        .nav>li>a:hover, .nav>li>a:active, .nav>li>a:focus{background-color: transparent;}
+    </style>
+{% endblock  %}
+
+{% block title %}
+    List
+{% endblock%}
+
+{% block navbar_title %}
+
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+
+{% endblock %}
+
+{% block list_filters_actions %}
+    {{ include('AcmeAccountBundle:Account:__tabs.html.twig') }}
+{% endblock %}
+{% block form %}
+    {#    {{ include('AcmeAccountBundle:Account:__tabs.html.twig') }}#}
+    <div class="container">
+        <div class="row">
+            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                <div class="card">
+                    <div class="card-body">
+                        <a href="{{ path('admin_acme_account_accounts_payment')}}">
+                            <div class="media">
+                                <div class="p-1 text-xs-center bg-cyan media-left media-middle">
+                                    <i class="fa fa-credit-card font-large-3 white"></i>
+                                </div>
+                                <div class="p-1 media-body">
+                                    <p style="font-size: 1.5em;">Payment</p>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {#<div class="container">
+        <canvas id="myChart"></canvas>
+    </div>#}
+
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <!-- Chart JS -->
+    {#<script type="text/javascript" src="{{ asset('js/Chart.min.js') }}"></script>
+    
+    <script type="text/javascript">
+        alert("avjh");
+                let myChart = document.getElementById('myChart').getContext('2d');
+                // Global Options
+                Chart.defaults.global.defaultFontFamily = 'Lato';
+                Chart.defaults.global.defaultFontSize = 18;
+                Chart.defaults.global.defaultFontColor = '#777';
+                let massPopChart = new Chart(myChart, {
+                type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                        data:{
+                        labels:["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
+                                datasets:[
+                                {
+                                label:'Paid',
+                                        data:[ 617, 1815, 1530, 1519, 1162, 9072, 876 ],
+                                        //backgroundColor:'green',
+                                        backgroundColor:'transparent',
+                                        borderWidth:1,
+                                        borderColor:'red',
+                                        hoverBorderWidth:3,
+                                        hoverBorderColor:'#000'
+                                },
+                                {
+                                label:'Unpaid',
+                                        data:[ 300, 546, 431, 565, 556, 1212, 5467 ],
+                                        //backgroundColor:'green',
+                                        backgroundColor:'transparent',
+                                        borderWidth:1,
+                                        borderColor:'BLUE',
+                                        hoverBorderWidth:3,
+                                        hoverBorderColor:'#000'
+                                },
+                                ]
+                        },
+                        options:{
+                        title:{
+                        display:true,
+                                text:'Income Statement',
+                                fontSize:25
+                        },
+                                legend:{
+                                display:true,
+                                        position:'right',
+                                        labels:{
+                                        fontColor:'#000'
+                                        }
+                                },
+                                layout:{
+                                padding:{
+                                left:50,
+                                        right:0,
+                                        bottom:0,
+                                        top:0
+                                }
+                                },
+                                tooltips:{
+                                enabled:true
+                                }
+                        }
+                });
+    </script>#}
+{% endblock %}

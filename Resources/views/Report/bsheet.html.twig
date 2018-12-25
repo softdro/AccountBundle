@@ -1,0 +1,141 @@
+{% extends '::sonata_standard_layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        .icon{
+            background: #fff;
+            padding: 0 25px;
+            color: #e57373;
+        }
+        .custom-margin{margin: 0 10px;padding: 15px; transition: 0.5s;}
+        {#        .custom-margin:hover{box-shadow: 0 2px 20px #ddd;}#}
+        .count{
+            {#            font-weight: 700;#}
+            color: #434a4a;
+            margin: 10px 10px 0 30px;
+        }
+        .content-header{padding:15px 0 0 0;}
+        .card-body{padding: 50px 45px;}
+        .card-body h4{
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
+            padding: 10px 20px 20px 20px;
+        }
+        .card-block  h2{margin: 0 0 20px 12px;}
+        .table1 td{padding: 0 3px;}
+        .navbar-default .navbar-nav > li > a.bsheet{border-bottom: 3px solid #777;}
+    </style>
+{% endblock  %}
+
+{% block title %}
+    List
+{% endblock%}
+
+{% block navbar_title %}
+
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+    {# {{ include('AcmeAccountBundle:Account:__tabs.html.twig') }}#}
+{% endblock %}
+{% block list_filters_actions %}
+    {{ include('AcmeAccountBundle:Account:__tabs.html.twig') }}
+{% endblock %}
+{% block form %}
+    <div class="card-body">
+        <div class="container">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class=" balance">
+                                {#                                <a href="#">#}
+                                <div class="icon">
+                                    <h2> <p class="cyan"><i class="fa fa-money fa-1x"></i>  BALANCE SHEET</p></h2>&nbsp;&nbsp; for {{ fy }}
+                                </div>
+                                <div class="count balance_count">
+                                    <div>
+                                        <div class="col-sm-6 col-md-6">
+                                            {% set ttext = "" %}
+                                            <table class="table1 table-striped1">
+                                                {% set fgt, initial, total = "", 0, 0 %}
+                                                {% for key, e in  data if e.code == constant('Acme\\AccountBundle\\Model\\AccountUtil::ACCOUNT_GROUP_ASSETS')  %}
+
+                                                    {% if e.gtitle and e.gtitle != fgt %}
+                                                        <tr><td colspan="2"><br/></td></tr>
+                                                        <tr><td colspan="2"><b>{{e.gtitle |default("") }}:</b></td></tr>
+                                                        {% set ttext = e.gtitle %} 
+                                                        {% set fgt, initial = e.gtitle, 1  %} 
+                                                    {% endif %}
+                                                    <tr>
+                                                        {# <td>{{e.gtitle |default("") }}</td>#}
+                                                        <td>&nbsp;&nbsp;{{e.name |default("")}}&nbsp;</td>
+                                                        <td class="text-right" >{{e.balance |default("")| number_format(2, '.', ',')}}</td>  {% set total = total + e.balance %}
+                                                        <td class="text-right" ></td>
+                                                    </tr>
+                                                    {% if e.total is defined %}
+                                                        <tr class="total"><td>&nbsp;&nbsp;Total {{ttext}} </td><td></td><td class="text-right" ><b>{{e.total |default("")| number_format(2, '.', ',') }}</b></td></tr>
+                                                                {% endif %}
+                                                            {% endfor%} 
+                                                <tr><td colspan="3"><hr/></td></tr>
+                                                <tr class="total"><td>Total Assets&nbsp;&nbsp;</td><td class="text-right" ><b>{{total |default("") | number_format(2, '.', ',') }}</b></td></tr>
+                                            </table>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                           
+                                            <table class="table1 table-striped1">
+                                             {% set ttext = "" %}    {% set fgt, initial,total = "", 0, 0 %}
+                                                {% for key, e in  data if e.code != constant('Acme\\AccountBundle\\Model\\AccountUtil::ACCOUNT_GROUP_ASSETS')  %}
+
+                                                    {% if e.gtitle and e.gtitle != fgt %}
+                                                        <tr><td colspan="2"><br/></td></tr>
+                                                        <tr><td colspan="2"><b>{{e.gtitle |default("") }}:</b></td></tr>
+                                                        {% set ttext = e.gtitle %} 
+                                                        {% set fgt, initial = e.gtitle, 1  %} 
+                                                    {% endif %}
+                                                    <tr>
+                                                        {# <td>{{e.gtitle |default("") }}</td>#}
+                                                        <td>&nbsp;&nbsp;{{e.name |default("")}}&nbsp;</td>
+                                                        <td class="text-right" >{{e.balance |default("")| number_format(2, '.', ',')}}</td>{% set total = total + e.balance %}
+                                                        <td class="text-right" ></td>
+                                                    </tr>
+                                                    {% if e.total is defined %}
+                                                        <tr class="total"><td>&nbsp;&nbsp;Total  {{ttext}} </td><td></td><td class="text-right" ><b>{{e.total |default("")| number_format(2, '.', ',') }}</b></td></tr>
+                                                                {% endif %}
+                                                            {% endfor%} &nbsp;&nbsp;
+                                                <tr><td colspan="3"><hr/></td></tr>
+                                                <tr class="total"><td>Total Liabilities & Equity &nbsp;&nbsp; </td><td class="text-right" ><b>{{total |default("") | number_format(2, '.', ',') }}</b></td></tr>
+                                            </table>
+                                        </div>
+                                    </div> 
+                                    {#<div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <table class="table1 table-striped1" style="width: 100%;">
+                                                <tr class="total"><td>&nbsp;&nbsp; Total</td><td class="text-right" style="padding-right: 9px;" ><b>{{total |default("") | number_format(2, '.', ',') }}</b></td></tr>
+                                            </table>
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <table class="table1 table-striped1" style="width: 100%;">
+                                                <tr class="total"><td>&nbsp;&nbsp; Total</td><td class="text-right" style="padding-right: 9px;" ><b>{{total |default("") | number_format(2, '.', ',') }}</b></td></tr>
+                                            </table>
+                                        </div>
+                                    </div>#}
+
+                                </div>
+
+                            </div>     
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

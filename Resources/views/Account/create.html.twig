@@ -1,0 +1,37 @@
+{#{% extends '::base.html.twig' %}#}
+{% extends base_template %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+    </style>
+{% endblock  %}
+
+{% block title %}
+    Create Account
+{% endblock%}
+
+{% block navbar_title %} {% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+    {#    <li>{% include 'SonataAdminBundle:Button:show_button.html.twig' %}</li>#}
+    {#    <li>{% include 'SonataAdminBundle:Button:history_button.html.twig' %}</li>#}
+    {#    <li>{% include 'SonataAdminBundle:Button:acl_button.html.twig' %}</li>#}
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+        {#    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>#}
+    {% endblock %}
+
+{% block form %}
+    <h1>User Payment</h1>
+
+    {% include 'AcmeAccountBundle:Account:fields.html.twig' %}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock  %}

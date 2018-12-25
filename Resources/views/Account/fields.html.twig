@@ -1,0 +1,155 @@
+{% block stylesheets %}
+    <style type="text/css">
+        .hfield li{ border: 1px solid #bbb; padding: 5px; margin: 5px; min-height: 120px;}
+        .hfield li .control-group{float: left; }
+        .hfield li input, .hfield .controls label{margin-left: 5px;}
+
+        .hfield li.btnAdd {border: none; min-height: 40px;}
+        .hfield li.btnAdd a{ padding: 5px; border: 1px solid; }
+        .hfield ul.tags {list-style: none;}
+        .tabmenu{display: block; overflow: hidden; position: relative; top: 1px;}
+        .tabmenu .amenu .tabs li{float: left; list-style: none;}
+        .tabmenu .amenu .tabs li a{border: 1px solid #D2D2D2; border-bottom: none;}
+        .tabmenu img{ padding: 30px 0 0 30px;}
+        .tabmenu h2{font-size: 2.8em; color: #969696; padding-left: 30px;}
+        .tabmenu img, .bannercont h2{display: inline-block;}
+        .tabcontent .cont{padding: 30px; background-color: #fff; margin-bottom: 5px; border: 1px solid #D2D2D2; }
+        .tabcontent .cont .sec{display: inline-block;}
+        .tabcontent .cont .sec input{line-height: 25px;}
+        .tabcontent .cont .sec label {  margin: 3px 0 0 0;  font-weight: normal; }
+        .tabcontent .cont .addD{float: left; width: 230px;}
+        .tabcontent .cont .addD1{margin-right: 20px;}
+        #acme_scholarshipbundle_student_submit{width: 70px; float: left; margin-right: 20px;}
+        #acme_scholarshipbundle_student_saveAndAdd{width: 130px; float: left;}
+
+        #acme_accountbundle_payment_date_time{display: none;}
+    </style>
+{% endblock  %}
+
+<div class="">
+    {{ form_start(form) }}
+
+    <div class="tabcontent round bgcolor1">
+        <div class="cont">
+
+            <div class="sec">
+                    <h2 class="robotoThin">ACCOUNT</h2>
+                <div style="width: 700px; ">
+
+                    {# render the task's only field: description #}
+                    {{ form_row(form.organization) }}
+                    {{ form_row(form.title) }}
+                    {{ form_row(form.visibility) }}
+                    {{ form_row(form.type) }}
+                    {{ form_row(form.status) }}
+                </div>
+            </div>
+                <br/><br/>
+            <div class="sec">
+                <h2 class="robotoThin">Account Mapping</h2>
+                <div class="segoeRegular" style="line-height: 35px;">
+                    <div class="hfield">
+                        <h4>Payment For</h4>
+                        <ul class="tags" data-prototype="{{ form_widget(form.account_mapping.vars.prototype)|e }}">
+                            {% for ledger in form.account_mapping %}
+                                <li class="degrees">{{ form_row(ledger) }}</li>
+                                {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    {{ form_rest(form) }}
+
+    {{ form_end(form) }}
+</div>
+
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+        $('ul.tabs').each(function() {
+            var $active, $content, $links = $(this).find('a');
+            $active = $($links.filter('[href="' + location.hash + '"]')[0] || $links[0]);
+            $active.addClass('active');
+
+            $content = $($active[0].hash);
+            $links.not($active).each(function() {
+                $(this.hash).hide();
+            });
+
+            $(this).on('click', 'a', function(e) {
+                $active.removeClass('active');
+                $content.hide();
+                $active = $(this);
+                $content = $(this.hash);
+                $active.addClass('active');
+                $content.show();
+                e.preventDefault();
+            });
+        });
+
+        {#        ====================== add degree ======================#}
+
+
+            var $addTagLink = $('<a href="#" class="add_tag_link">Add Payment</a>');
+            var $newLinkLi = $('<li></li>').append($addTagLink);
+            jQuery(document).ready(function() {
+                $collectionHolder = $('ul.tags');
+                $collectionHolder.append($newLinkLi);
+
+                $("li").each(function() {
+                    $(this).children(':last').addClass('last');
+                });
+                // add a delete link to all of the existing tag form li elements
+                var total = $('ul.tags li').length;
+                $collectionHolder.find('li').each(function(index) {
+                    if (index != total - 1)
+                        addTagFormDeleteLink($(this));
+                    else
+                        $(this).addClass('btnAdd');
+                });
+
+                // count the current form inputs we have (e.g. 2), use that as the new
+                // index when inserting a new item (e.g. 2)
+                $collectionHolder.data('index', $collectionHolder.find(':input').length);
+                $addTagLink.on('click', function(e) {
+                    // prevent the link from creating a "#" on the URL
+                    e.preventDefault();
+                    // add a new tag form (see next code block)
+                    addTagForm($collectionHolder, $newLinkLi);
+                });
+            });
+
+            function addTagForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+                // get the new index
+                var index = $collectionHolder.data('index');
+                // Replace '__name__' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = prototype.replace(/__name__/g, index);
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+                // Display the form in the page in an li, before the "Add a tag" link li
+                var $newFormLi = $('<li></li>').append(newForm);
+                $newLinkLi.before($newFormLi);
+
+                // add a delete link to the new form
+                addTagFormDeleteLink($newFormLi);
+            }
+
+            function addTagFormDeleteLink($tagFormLi) {
+                var $removeFormA = $('<a href="#" style="border: 1px solid; padding: 5px;">Delete</a>');
+                $tagFormLi.append($removeFormA);
+                $removeFormA.on('click', function(e) {
+                    // prevent the link from creating a "#" on the URL
+                    e.preventDefault();
+                    // remove the li for the tag form
+                    $tagFormLi.remove();
+                });
+            }
+    </script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% block stylesheets %}
+    <style>
+{#        .nav{margin-left: 60px;}#}
+        ul li{margin: 0 2px;}
+        .navbar{padding: 0;}
+        {#.navbar-default .navbar-nav>li>a{color: #777;}
+        .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover{color: #333;}#}
+    </style>
+{% endblock %}
+<ul class="nav navbar-nav">
+{#    <li><a class="lists" href="{{ path('admin_acme_account_accounts_lists')}}"><i class="fa fa-list"></i> Lists &nbsp;|</a></li> #}
+    <li><a class="payment" href="{{ path('admin_acme_account_accounts_payment')}}"><i class="fa fa-credit-card"></i> Payment</a> </li>
+{#    <li><a href="{{ path('admin_acme_account_accounts_receive')}}">Receive Statement</a></li>#}
+    <li><a class="exchange" href="{{ path('admin_acme_account_accounts_transfer')}}"><i class="fa fa-exchange"></i> Transfer Amount</a></li>
+    <li><a class="investment" href="{{ path('admin_acme_account_accounts_investment')}}"><i class="fa fa-money"></i> Investment</a></li>
+    <li><a class="create" href="{{ path('account_create')}}"><i class="fa fa-plus-square-o"></i> Create</a></li>
+    
+{#    <li><a class="istatement" href="{{ path('admin_acme_account_accounts_istatement')}}"><i class="fa fa-money"></i> Income Statements</a></li>#}
+{#    <li><a class="bsheet" href="{{ path('admin_acme_account_accounts_balancesheet')}}"><i class="fa fa-balance-scale"></i> Balance Sheet</a></li>#}
+</ul>

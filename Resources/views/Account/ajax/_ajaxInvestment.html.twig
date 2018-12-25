@@ -1,0 +1,49 @@
+{#{% extends '::sonata_standard_layout.html.twig' %}#}
+
+<style type="text/css">
+
+</style>
+
+
+<div id="ajax">
+    {{ form_start(form, {'attr': {'id': 'transactionForm'}}) }}
+
+    <div class="row">
+        <div class="col-md-12 error">
+            {{ form_errors(form) }}
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6">
+            {{ form_row(form.account, { 'attr': {'class': 'form-control select_account'} }) }}
+            <br/>
+            {{ form_row(form.amount, { 'attr': {'class': 'form-control'} }) }}
+            <br/>
+            {{ form_row(form.percentage, { 'attr': {'class': 'form-control'} }) }}
+            <br/>
+            {{ form_row(form.payment, { 'attr': {'class': 'form-control'} }) }}
+
+        </div>
+
+        <div class="col-md-6">
+            {{ form_row(form.previous, { 'attr': {'class': 'form-control', 'readonly': true} }) }}
+            <br/>{{ form_row(form.investment, { 'attr': {'class': 'form-control', 'readonly': true} }) }}
+        </div>
+
+    </div>
+
+    <div class="form-actions">
+        <button id="transactinBtn" type="submit" class="btn btn-info">
+            <i class="icon-check2"></i> Update
+        </button>
+        {# <button id="transactinBtn" type="submit" class="btn btn-primary" onclick="return foo();">
+             <i class="icon-check2"></i> Ajax Process
+         </button>#}
+    </div>
+    <div style="display: none">
+        {{ form_rest(form) }}
+    </div>
+    {{ form_end(form) }}
+
+</div>

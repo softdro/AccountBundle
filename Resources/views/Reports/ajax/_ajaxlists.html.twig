@@ -1,0 +1,29 @@
+{#{% extends '::sonata_standard_layout.html.twig' %}#}
+
+ <style type="text/css">
+    
+ </style>
+
+
+<table class="table"> 
+    <thead>
+    <th>Period</th>
+    <th>Account</th>
+    <th>Description</th>
+    <th>Debit</th>
+    <th>Credit</th>
+    <th>Created</th>
+</thead>
+<tbody>
+    {% for e in entities %}
+        <tr>
+            <td>{{e.period}}</td>
+            <td>{{e.account}}</td>
+            <td>{{e.description}}</td>
+            <td>{{e.debit}}</td>
+            <td>{{e.credit}}</td>
+            <td>{{e.created | date('d:m:Y')}}</td>
+        </tr>
+    {% endfor%}    
+</tbody>
+</table>

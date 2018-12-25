@@ -1,0 +1,111 @@
+{% extends '::sonata_standard_layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        .icon{
+            background: #fff;
+            padding: 0 25px;
+            color: #e57373;
+        }
+        .custom-margin{margin: 0 10px;padding: 15px; transition: 0.5s;}
+        {#        .custom-margin:hover{box-shadow: 0 2px 20px #ddd;}#}
+        .count{
+            {#            font-weight: 700;#}
+            color: #434a4a;
+            margin: 10px 10px 0 30px;
+        }
+        .content-header{padding:15px 0 0 0;}
+        .card-body{padding: 50px 45px;}
+        .card-body h4{
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
+            padding: 10px 20px 20px 20px;
+        }
+        .card-block  h2{margin: 0 0 20px 12px;}
+        .table1 td{padding: 0 3px;}
+        .navbar-default .navbar-nav > li > a.istatement{border-bottom: 3px solid #777;}
+    </style>
+{% endblock  %}
+
+{% block title %}
+    List
+{% endblock%}
+
+{% block navbar_title %}
+
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+
+{% endblock %}
+{% block list_filters_actions %}
+    {{ include('AcmeAccountBundle:Account:__tabs.html.twig') }}
+{% endblock %}
+{% block form %}
+    <div class="card-body">
+        <div class="container">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class=" balance">
+                                {#                                <a href="#">#}
+                                <div class="icon">
+                                    <h2> <p class="text-blue"><i class="fa fa-money fa-1x"></i>  INCOME STATEMENT</p></h2>&nbsp;&nbsp; for {{ fy }}
+                                </div>
+                                <div class="count balance_count">
+                                    {% set ttext = "" %}
+                                    <table class="table1 table-striped1">
+                                        {% set fgt, initial = "", 0 %}
+                                        {% for key, e in  data %}
+
+                                            {% if e.gtitle is defined and e.gtitle != fgt %}
+                                                <tr><td colspan="2"><br/></td></tr>
+                                                <tr><td colspan="2"><b>{{e.gtitle |default("") }}:</b></td></tr>
+                                                {% set ttext = e.gtitle %} 
+                                                {% set fgt, initial = e.gtitle, 1  %} 
+                                            {% endif %}
+                                            <tr>
+                                                {#                                                <td>{{e.gtitle |default("") }}</td>#}
+                                                <td>&nbsp;&nbsp;{{e.name |default("")}}&nbsp;</td>
+                                                <td class="text-right" >{{e.balance |default("")| number_format(2, '.', ',')}}</td>
+                                                <td class="text-right" ></td>
+                                            </tr>
+                                            {% if e.total is defined %}
+                                                <tr class="total"><td>&nbsp;&nbsp;Total {{ttext}} </td><td></td><td class="text-right" ><b>{{e.total |default("")| number_format(2, '.', ',') }}</b></td></tr>
+                                                        {% endif %}
+                                                    {% endfor%} 
+                                                    {#                                        <tr class="total"><td>&nbsp;&nbsp;Total {{ttext}} </td><td></td><td class="text-right" ><b>{{total |default("") }}</b></td></tr>#}
+                                        <tr><td colspan="3" style="border-bottom: 1px solid;"></td></tr>
+                                        <tr class="total"><td>&nbsp;&nbsp;Income Before income TAX</td><td></td><td class="text-right" ><b>{{subtotal |default("")| number_format(2, '.', ',') }}</b></td></tr>
+                                        <tr class="total"><td>&nbsp;&nbsp;Income TAX Expense</td><td></td><td class="text-right" ><b>{{tax |default("")| number_format(2, '.', ',') }}</b></td></tr>
+                                         <tr><td colspan="2"><td colspan="1" style="border-bottom: 1px solid;"></td></tr>
+                                        <tr class="total"><td>&nbsp;&nbsp;Net Income</td><td></td><td class="text-right" ><b>{{netincome |default("")| number_format(2, '.', ',') }}</b></td></tr>
+                                    </table>
+                                    <table> 
+                                        {% for e in entities %}
+                                            <tr>
+                                                {#                                                <td>{{e.account.code}}</td>#}
+                                                {#                                                <td>{{e.account}}</td>#}
+                                                {#                                                <td>{{e.debit}}</td>#}
+                                                {#                                                <td>{{e.credit}}</td>#}
+                                            </tr>
+                                        {% endfor%}    
+                                    </table>
+                                </div>
+                                {#                                </a>  #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

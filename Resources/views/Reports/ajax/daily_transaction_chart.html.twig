@@ -1,0 +1,87 @@
+
+<canvas id="daily_transaction"></canvas>
+
+<script type="text/javascript">
+//Daily Transaction Chart JS 
+            let daily_transaction = document.getElementById('daily_transaction');
+            // Global Options
+            Chart.defaults.global.defaultFontFamily = 'Lato';
+            Chart.defaults.global.defaultFontSize = 18;
+            Chart.defaults.global.defaultFontColor = '#777';
+            let massPopChart1 = new Chart(daily_transaction, {
+            type:'line', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+                    data:{
+                    labels:["Sat", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri"],
+                            datasets:[
+                            {
+                            label:'Paid1',
+                                    data:[ 617, 1815, 1530, 1519, 1162, 9072, 876 ],
+                                    //backgroundColor:'green',
+                                    backgroundColor:'transparent',
+                                    borderWidth:1,
+                                    borderColor:'red',
+                                    hoverBorderWidth:3,
+                                    hoverBorderColor:'#000'
+                            },
+                            {
+                            label:'Unpaid1',
+                                    data:[ 300, 546, 431, 565, 556, 1212, 5467 ],
+                                    //backgroundColor:'green',
+                                    backgroundColor:'transparent',
+                                    borderWidth:1,
+                                    borderColor:'BLUE',
+                                    hoverBorderWidth:3,
+                                    hoverBorderColor:'#000'
+                            },
+                            ]
+                    },
+                    //                 options: {
+                    //     responsive: true,
+                    //     maintainAspectRatio: false,
+                    //     scales: {
+                    //         yAxes: [{
+                    //             ticks: {
+                    //                 beginAtZero:true
+                    //             }
+                    //         }]
+                    //     }
+                    // }
+                    options:{
+                    responsive: true,
+                            title:{
+                            display:true,{#                                        text:'Income Statement',#}
+                                    text:'',
+                                    fontSize:25
+                            },
+                            legend:{
+                            display:true,
+                                    position:'top',
+                                    labels:{
+                                    fontColor:'#000'
+                                    }
+                            },
+                            layout:{
+                            padding:{
+                            left:50,
+                                    right:0,
+                                    bottom:0,
+                                    top:0
+                            }
+                            },
+                            tooltips:{
+                            enabled:true
+                            }{#,
+                                scales: {
+                                xAxes: [{
+                                type: 'time',
+                                        distribution: 'series'
+                                        time: {
+                                        displayFormats: {
+                                        quarter: 'MMM D'
+                                        }
+                                        }
+                                }]
+                                }#}
+                    }
+            });
+</script>

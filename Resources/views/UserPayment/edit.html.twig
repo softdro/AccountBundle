@@ -1,0 +1,50 @@
+{% extends base_template %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+    </style>
+{% endblock  %}
+
+{% block title %}
+  Edit User Payment
+{% endblock%}
+
+{% block navbar_title %}
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+    {#    <li>{% include 'SonataAdminBundle:Button:show_button.html.twig' %}</li>#}
+    {#    <li>{% include 'SonataAdminBundle:Button:history_button.html.twig' %}</li>#}
+    {#    <li>{% include 'SonataAdminBundle:Button:acl_button.html.twig' %}</li>#}
+    <li>{% include 'SonataAdminBundle:Button:list_button.html.twig' %}</li>
+        {#    <li>{% include 'SonataAdminBundle:Button:create_button.html.twig' %}</li>#}
+    {% endblock %}
+
+{#{% block tab_menu %} {{ knp_menu_render(admin.sidemenu(action), {'currentClass' : 'active'}, 'list') }}{% endblock %}#}
+
+{#{% use 'AdminSeoBundle:Seo:seolist.html.twig' with form as parentForm %}#}
+
+{% block form %}
+
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="notice">{{ flashMessage }}</div>
+    {% endfor %}
+
+    <h1>Student edit</h1>
+
+        {% include 'AcmeAccountBundle:UserPayment:fields.html.twig' %}
+
+    <ul class="record_actions">
+        <li>{{ form(delete_form) }}</li>
+    </ul>
+{% endblock %}
+
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock  %}

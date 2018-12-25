@@ -1,0 +1,16 @@
+<style type="text/css">
+    .tab a{ color: #888;}
+    .tab div{display: inline-block; padding: 10px 6px; border-bottom: 1px solid #BDBDBD; margin: 0 5px;}
+</style>
+
+<div class="tab">
+{#    <div class="trns_btn"><a href="{{ admin.generateUrl('transfer') }}">Transfer Account</a></div>#}
+{#    <div class="expend_btn"><a href="{{ admin.generateUrl('expenditure') }}">Expenditure Account</a></div>#}
+{#    <div class="wages_btn"><a href="{{ admin.generateUrl('wages') }}">Wages</a></div>#}
+    <div class="info_btn"><a href="{{ admin.generateUrl('info') }}">Balance</a></div>
+    <div class="list_btn"><a href="{{ admin.generateUrl('list') }}">Account Details</a></div>
+    
+    {% if is_granted('ROLE_ALLOWED_TO_SWITCH') %}
+{#        <div class="create_btn"><a href="{{ admin.generateUrl('create') }}">Create</a></div>#}
+    {% endif %}
+</div>

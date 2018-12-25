@@ -1,0 +1,100 @@
+{% extends '::sonata_standard_layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        .icon{
+            background: #fff;
+            padding: 0 25px;
+            color: #e57373;
+        }
+        .custom-margin{margin: 0 10px;padding: 15px; transition: 0.5s;}
+        {#        .custom-margin:hover{box-shadow: 0 2px 20px #ddd;}#}
+        .count{
+            font-weight: 700;
+            color: #434a4a;
+            margin: 10px 10px 0 30px;
+        }
+        {#.fa-credit-card,.fa-check-square,
+        .fa-bandcamp,.custom_profile_icon,.fa-money,.fa-database{
+            font-size: 3rem;
+            margin: 0;
+        }#}
+        .card-body{padding: 50px 45px;}
+        .card-body h4{
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
+            padding: 10px 20px 20px 20px;
+        }
+        .card-block  h2{margin: 0 0 20px 12px;}
+    </style>
+{% endblock  %}
+
+{% block title %}
+    List
+{% endblock%}
+
+{% block navbar_title %}
+
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+
+{% endblock %}
+
+{% block form %}
+
+{#    {% block list_filters_actions %}#}
+{#        {{parent()}}#}
+        {{ include('AcmeAccountBundle:Account:__tabs.html.twig') }}
+{#    {% endblock %}#}
+
+    <div class="card-body">
+        <div class="container">
+            <div class="card">
+                <div class="card-block">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div class="custom-margin balance">
+                                {#                                <a href="#">#}
+                                <div class="icon">
+                                    <i class="fa fa-database" aria-hidden="true"></i><h4> Income Statement</h4>
+                                </div>
+                                <div class="count balance_count">
+
+                                    <table>
+                                        {% for key, e in  data %}
+                                            <tr>
+                                                <td>{{key }} &nbsp;</td>
+                                                <td>{{e.name |default("")}}</td>
+                                                <td>{{e.balance |default("")}}</td>
+                                            </tr>
+                                        {% endfor%} 
+                                    </table>
+                                    <hr/>
+                                    <table> 
+                                        {% for e in entities %}
+                                            <tr>
+                                                <td>{{e.account.code}}</td>
+                                                <td>{{e.account}}</td>
+                                                <td>{{e.debit}}</td>
+                                                <td>{{e.credit}}</td>
+                                            </tr>
+                                        {% endfor%}    
+                                    </table>
+                                </div>
+                                {#                                </a>  #}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

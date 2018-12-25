@@ -1,0 +1,296 @@
+{% extends '::sonata_standard_layout.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style type="text/css">
+        form .form-actions{border: none;}
+        .block{display: block;}
+        .icon{
+            background: #fff;
+            padding: 0 25px;
+            color: #e57373;
+        }
+        .custom-margin{margin: 0;padding: 15px 0; transition: 0.5s;}
+        .count{
+            font-weight: 700;
+            color: #434a4a;
+            margin: 10px 10px 0 30px;
+        }
+        {#.fa-credit-card,.fa-check-square,
+        .fa-bandcamp,.custom_profile_icon,.fa-money,.fa-database{
+            font-size: 3rem;
+            margin: 0;
+        }#}
+        .alert .close {margin-right: 13px;}
+        .card-body{padding: 10px 20px;}
+        .card{margin-bottom: 0;margin-top: 20px;}
+        .card h4{
+            display: inline-block;
+            vertical-align: top;
+            margin: 0;
+            padding: 10px 20px 20px 20px;
+        }
+        .card-block  h2{margin: 0 0 20px 12px;}
+        .icheckbox_square-blue{display: block;}
+        .content-header{padding:15px 0 0 0;}
+        .sonata-ba-form .nav{display: none;}
+        .navbar-default .navbar-nav > li > a.exchange{border-bottom: 3px solid #777;}
+    </style>
+{% endblock  %}
+
+{% block title %}
+    List
+{% endblock%}
+
+{% block navbar_title %}
+
+{% endblock %}
+
+{% block sonata_page_content_header %}
+    {{ parent() }}
+{% endblock %}
+
+{% block actions %}
+
+{% endblock %}
+{% block list_filters_actions %}
+    {{ include('AcmeAccountBundle:Account:__tabs.html.twig') }}
+{% endblock %}
+{% block form %}
+
+    {#<div class="card">
+        <div class="card-body collapse in">
+            <div class="card-block">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>#}
+
+    <div class="card">
+        <div class="card-header">
+            <div class="icon">
+                <p><i class="fa fa-credit-card" aria-hidden="true"></i> PAYMENT</p>
+            </div>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                            {#                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>#}
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card-body collapse in">
+            {% include 'SonataCoreBundle:FlashMessage:render.html.twig' %}
+            <div class="card-block">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            {#                            <div class="custom-margin">#}
+                            <div class="">
+                                {{ form_start(form, {'attr': {'id': 'transactionForm'}}) }}
+
+                                <div class="row">
+                                    <div class="col-md-12 error">
+                                        {{ form_errors(form) }}
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        {{ form_row(form.first_account, { 'attr': {'class': 'form-control'} }) }}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{ form_row(form.first_cr, { 'attr': {'class': '', 'checked': true} }) }}
+                                    </div>
+                                    <div class="col-md-4">
+                                        {{ form_row(form.second_account, { 'attr': {'class': 'form-control'} }) }}
+                                    </div>
+                                    <div class="col-md-2">
+                                        {{ form_row(form.second_cr, { 'attr': {'class': ''} }) }}
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-top: 20px;">
+                                    <div class="col-md-6">
+                                        {{ form_row(form.first_amount, { 'attr': {'class': 'form-control'} }) }}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{ form_row(form.description, { 'attr': {'class': 'form-control'} }) }}
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <button id="transactinBtn" type="submit" class="btn btn-primary">
+                                        <i class="icon-check2"></i> Process
+                                    </button>
+                                    <button id="transactinBtn" type="submit" class="btn btn-primary" onclick="return foo();">
+                                        <i class="icon-check2"></i> Ajax Process
+                                    </button>
+                                </div>
+                                <div style="display: none">
+                                    {{ form_rest(form) }}
+                                </div>
+                                {{ form_end(form) }}
+
+                            </div>
+
+                            {#                            </div>#}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            <div class="icon">
+                <p> <i class="fa fa-database" aria-hidden="true"></i> TRANSACTION HISTORY</p>
+            </div>
+            <a class="heading-elements-toggle"><i class="icon-ellipsis font-medium-3"></i></a>
+            <div class="heading-elements">
+                <ul class="list-inline mb-0">
+                    <li><a data-action="collapse"><i class="icon-minus4"></i></a></li>
+                    <li><a data-action="reload"><i class="icon-reload"></i></a></li>
+                    <li><a data-action="expand"><i class="icon-expand2"></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="card-body collapse in">
+            <div class="card-block">
+                <div class="form-body">
+                    <div class="row">
+                        <div class="col-sm-12 col-md-12">
+                            <div id="tlist">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+<br/><br/>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    <script>
+        function foo(e) {
+           
+           alert("Submit button clicked!");
+             e.preventDefault();
+              
+            return true;
+        }
+
+        jQuery(document).ready(function ($) {
+
+            function foo() {
+                alert("Submit button clicked!");
+                return true;
+            }
+
+            var $form = $('#default_contact');
+
+            $form.submit(function (event) {
+        {#                alert('sdf');#}
+                    $.ajax({
+                        type: 'POST',
+                        url: $form.attr('action'),
+                        data: $form.serialize(),
+                        success: function (response) {
+                            alert(response);
+                        }
+                    });
+                    event.preventDefault;
+                    return false;
+                });
+            });
+
+            (function ($) {
+        {#            processForm();#}
+                function processForm(e) {
+                    e.preventDefault();
+                    alert('sfd');
+                    $.ajax({
+                        url: 'users.php',
+                        dataType: 'text',
+                        type: 'post',
+                        contentType: 'application/x-www-form-urlencoded',
+                        data: $(this).serialize(),
+                        success: function (data, textStatus, jQxhr) {
+                            $('#response pre').html(data);
+                        },
+                        error: function (jqXhr, textStatus, errorThrown) {
+                            console.log(errorThrown);
+                        }
+                    });
+
+                    e.preventDefault();
+                }
+
+                $('#transactionForm1').submit(processForm);
+            })(jQuery);
+
+            $(document).ready(function () {
+        {# a#}lert('df');
+
+                $("#transactionForm1").submit(function (event) {
+                    alert('df');
+                    // Stop form from submitting normally
+                    event.preventDefault();
+
+                    // Get some values from elements on the page:
+                    var $form = $(this),
+                            a1 = $form.find("input[name='s']").val(),
+                            fcr = $form.find("input[name='s']").val(),
+                            a2 = $form.find("input[name='s']").val(),
+                            scr = $form.find("input[name='s']").val(),
+                            amt = $form.find("input[name='s']").val(),
+                            des = $form.find("input[name='s']").val(),
+                            alert
+                    (a1 + "," + fcr + "," + a2 + "," + scr + "," + amt + "," + des);
+                    url = $form.attr("action");
+
+                    // Send the data using post
+                    var posting = $.post(url, {s: term});
+
+                    // Put the results in a div
+                    posting.done(function (data) {
+                        var content = $(data).find(".msg");
+                        $(".error").empty().append(content);
+                        ajaxlists();
+                    });
+                });
+            });
+
+            ajaxlists();
+            function ajaxlists() {
+                var path = "{{ path('admin_acme_account_account_ajaxlists') }}";
+                $.ajax({
+                    type: 'POST',
+                    url: path,
+                    data: {},
+                    success: function (data) {
+                        if (data.status == 'error') {
+                            alert('error handling, show data.message or what you want.');
+                        } else {
+                            $('#tlist').html(data);
+                        }
+                    }
+                });
+            }
+
+
+    </script>
+{% endblock  %}
