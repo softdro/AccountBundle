@@ -23,7 +23,7 @@ class InvestmentType extends AbstractType {
                 ->add('account', 'entity', array(
                     'empty_value' => '-- select one --',
                     'required' => TRUE,
-                    'class' => 'AcmeAccountBundle:Account',
+                    'class' => 'SDROAccountBundle:Account',
                     'query_builder' => function(\Doctrine\ORM\EntityRepository $er) {
                         return $er->createQueryBuilder('a')
                                 ->innerJoin('a.account_head', 'ah')
@@ -41,7 +41,7 @@ class InvestmentType extends AbstractType {
                     'label' => 'Payment By',
                     'required' => TRUE,
                     'mapped' => FALSE,
-                    'class' => 'AcmeAccountBundle:Account',
+                    'class' => 'SDROAccountBundle:Account',
                     'query_builder' => function(\Doctrine\ORM\EntityRepository $er) {
                         return $er->createQueryBuilder('a')
                                 ->innerJoin('a.account_head', 'ah')

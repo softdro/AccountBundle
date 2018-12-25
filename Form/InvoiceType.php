@@ -29,7 +29,7 @@ class InvoiceType extends AbstractType {
 ////                    'mapped' => false,
 //                    'required' => true,
 //                    'empty_value' => '-- Select Account --',
-//                    'class' => 'AcmeAccountBundle:Account',
+//                    'class' => 'SDROAccountBundle:Account',
 //                    'query_builder' => function(\Doctrine\ORM\EntityRepository $er) {
 //                        return $er->createQueryBuilder('a')
 //                                ->leftJoin('a.account_head', 'ah')

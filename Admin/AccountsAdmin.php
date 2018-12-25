@@ -59,7 +59,7 @@ class AccountsAdmin extends Admin {
 //                ->add('account_group', 'sonata_type_model', array(
 ////                    'query' => $query,
 //                    'expanded' => true,
-//                    'class' => 'AcmeAccountBundle:AccountGroup',
+//                    'class' => 'SDROAccountBundle:AccountGroup',
 //                    'required' => FALSE,
 //                    'multiple' => true,
 //                    'by_reference' => false,
@@ -80,7 +80,7 @@ class AccountsAdmin extends Admin {
 ////                    'compound' => true,
 //                    'multiple' => true,
 //                    'by_reference' => false,
-//                    'class' => 'AcmeAccountBundle:AccountGroup',
+//                    'class' => 'SDROAccountBundle:AccountGroup',
 ////                    'validation_groups' => false,
 ////                    'query' => $query,
 //                        )
@@ -110,7 +110,7 @@ class AccountsAdmin extends Admin {
                 ->add('account_group', null, array('show_filter' => true))
 //                ->add('group', null, array('show_filter' => true))
 //                ->add('group', null, array(), 'entity', array(
-//                    'class' => 'AcmeAccountBundle:Group',
+//                    'class' => 'SDROAccountBundle:Group',
 //                    'property' => 'title',
 //                ))
 //                ->add('group', null, array(

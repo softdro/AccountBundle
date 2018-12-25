@@ -43,7 +43,7 @@ class LedgerAdmin extends Admin {
 
         $query = $em->createQueryBuilder('a')
                 ->select('a')
-                ->from('AppAcmeAccountBundle:Account', 'a')
+                ->from('SDROAccountBundle:Account', 'a')
 //                ->where('a.type = :type')
 //                ->setParameter('type', Type::ACCOUNT_TYPE_FB)
         ;

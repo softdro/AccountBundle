@@ -18,7 +18,7 @@ class BatchTransactionType extends AbstractType {
                 ->add('first_account', 'entity', array(
                     'empty_value' => '-- select one --',
                     'required' => TRUE,
-                    'class' => 'AcmeAccountBundle:Account',
+                    'class' => 'SDROAccountBundle:Account',
                     'query_builder' => function(\Doctrine\ORM\EntityRepository $er) {
                         return $er->createQueryBuilder('a')
                                 ->innerJoin('a.account_head', 'ah')
@@ -34,7 +34,7 @@ class BatchTransactionType extends AbstractType {
                 ))
                 ->add('second_account', 'entity', array(
                     'empty_value' => '-- select one --',
-                    'class' => 'AcmeAccountBundle:Account',
+                    'class' => 'SDROAccountBundle:Account',
                     'query_builder' => function(\Doctrine\ORM\EntityRepository $er) {
                         return $er->createQueryBuilder('a')
                                 ->innerJoin('a.account_head', 'ah')

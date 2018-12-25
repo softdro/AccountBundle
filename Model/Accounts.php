@@ -32,19 +32,19 @@ class Accounts {
      * @return \InventoryBundle\Entity\Repository\ProductRepository
      */
     public function getAccountRepository() {
-        return $this->em->getRepository('AppAcmeAccountBundle:Account');
+        return $this->em->getRepository('SDROAccountBundle:Account');
     }
 
     public function getBatchRepository() {
-        return $this->em->getRepository('AppAcmeAccountBundle:Batch');
+        return $this->em->getRepository('SDROAccountBundle:Batch');
     }
 
     public function getAccontGroupRepository() {
-        return $this->em->getRepository('AppAcmeAccountBundle:AccountGroup');
+        return $this->em->getRepository('SDROAccountBundle:AccountGroup');
     }
 
     public function getGroupRepository() {
-        return $this->em->getRepository('AppAcmeAccountBundle:Group');
+        return $this->em->getRepository('SDROAccountBundle:Group');
     }
 
     /**
@@ -56,8 +56,8 @@ class Accounts {
     public function getAccountByHead($accountHeadCode) {
 
         $query = $this->em
-                ->createQuery("SELECT a FROM AppAcmeAccountBundle:Account a "
-                        . " LEFT JOIN AppAcmeAccountBundle:AccountHead ah WITH a.account_head = ah.id"
+                ->createQuery("SELECT a FROM SDROAccountBundle:Account a "
+                        . " LEFT JOIN SDROAccountBundle:AccountHead ah WITH a.account_head = ah.id"
                         . " WHERE ah.code in (:ah) "
                 )
                 ->setParameter('ah', $accountHeadCode)
@@ -71,7 +71,7 @@ class Accounts {
     public function getAccountsByGroupCode($accountGroupCode) {
 //        \Doctrine\Common\Util\Debug::dump($accountGroupCode);
 //        throw new \Exception($accountGroupCode);
-        $results = $this->em->getRepository("AppAcmeAccountBundle:Account")
+        $results = $this->em->getRepository("SDROAccountBundle:Account")
                 ->createQueryBuilder('a')
                 ->select('a')
                 ->leftJoin('a.account_group', 'ag')
@@ -84,8 +84,8 @@ class Accounts {
 //        if (sizeof($results) == 0)
 //            throw new \Exception("not found accounts by Group Code: " . $accountGroupCode);
 //        $query = $this->em
-//                ->createQuery("SELECT a FROM AcmeAccountBundle:Account a "
-//                        . " LEFT JOIN AcmeAccountBundle:AccountGroup ag WITH  ag.id = a.account_group"
+//                ->createQuery("SELECT a FROM SDROAccountBundle:Account a "
+//                        . " LEFT JOIN SDROAccountBundle:AccountGroup ag WITH  ag.id = a.account_group"
 //                        . " WHERE ag.code in (:ag) "
 //                )
 //                ->setParameter('ag', $accountGroupCode)
@@ -254,7 +254,7 @@ class Accounts {
     public function getAccountBalance($account) {
 
         $account1 = $this->getEntityManager()
-                ->createQuery('SELECT a.* FROM AppAcmeAccountBundle:Account a'
+                ->createQuery('SELECT a.* FROM SDROAccountBundle:Account a'
                         . ' WHERE a.id = ?1 AND a.period = ?2'
                 )
                 ->setParameter('1', $account)
@@ -271,9 +271,9 @@ class Accounts {
 
     public function getFiscalYear() {
         $result = null;
-        $result = $this->em->getRepository('AppAcmeAccountBundle:Period')->findOneBy(array('enable' => TRUE));
+        $result = $this->em->getRepository('SDROAccountBundle:Period')->findOneBy(array('enable' => TRUE));
 //                $this->getEntityManager()
-//                ->createQuery('SELECT a FROM AcmeAccountBundle:Period a'
+//                ->createQuery('SELECT a FROM SDROAccountBundle:Period a'
 //                        . ' WHERE a.enable = ?1 '
 //                )
 //                ->setParameter('1', true);
@@ -288,8 +288,8 @@ class Accounts {
 
     public function getReportIndex($report_code) {
         $query = $this->em
-                ->createQuery("SELECT ri FROM AppAcmeAccountBundle:ReportIndex ri "
-                        . " LEFT JOIN AppAcmeAccountBundle:Report r WITH r.id = ri.report "
+                ->createQuery("SELECT ri FROM SDROAccountBundle:ReportIndex ri "
+                        . " LEFT JOIN SDROAccountBundle:Report r WITH r.id = ri.report "
                         . " WHERE r.code in (:r) "
                         . " ORDER BY ri.priority ASC"
                 )
@@ -323,9 +323,9 @@ class Accounts {
 //        \Doctrine\Common\Util\Debug::dump($report_index);
 //        throw new \Exception(sizeof($report_index));
 //        $query = $this->em
-//                ->createQuery("SELECT l FROM AcmeAccountBundle:Ledger l "
-//                        . " LEFT JOIN AcmeAccountBundle:Account a WITH l.account = a.id"
-//                        . " JOIN AcmeAccountBundle:AccountGroup ag WITH a.account_group = ag.id "
+//                ->createQuery("SELECT l FROM SDROAccountBundle:Ledger l "
+//                        . " LEFT JOIN SDROAccountBundle:Account a WITH l.account = a.id"
+//                        . " JOIN SDROAccountBundle:AccountGroup ag WITH a.account_group = ag.id "
 //                        . " WHERE ag.code in (:ag) "
 //                        . " AND l.period = ?3"
 //                )
@@ -350,7 +350,7 @@ class Accounts {
         $data = array();
         $report_index = $this->getReportIndex(AccountUtil::REPORT_BALANCE_SHEET);
 
-        $results = $this->em->getRepository("AppAcmeAccountBundle:Account")
+        $results = $this->em->getRepository("SDROAccountBundle:Account")
                 ->createQueryBuilder('a')
                 ->select('SUM(a.balance) as total')
                 ->leftJoin('a.account_group', 'ag')

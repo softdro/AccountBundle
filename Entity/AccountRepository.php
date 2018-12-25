@@ -24,7 +24,7 @@ class AccountRepository extends EntityRepository {
         throw new \Exception(sizeof($accountBalance));
 
         $query = $this->getEntityManager()
-                ->createQuery('SELECT a.account_number FROM AcmeAccountBundle:Account a'
+                ->createQuery('SELECT a.account_number FROM SDROAccountBundle:Account a'
                 )
 //                ->setParameter('1', "$acc_code" . '%')
         ;
@@ -47,7 +47,7 @@ class AccountRepository extends EntityRepository {
     public function getAccountBalance($account) {
 
         $account1 = $this->getEntityManager()
-                ->createQuery('SELECT a.* FROM AcmeAccountBundle:Account a'
+                ->createQuery('SELECT a.* FROM SDROAccountBundle:Account a'
                         . ' WHERE a.id = ?1 AND a.period = ?2'
                 )
                 ->setParameter('1', $account)
@@ -65,7 +65,7 @@ class AccountRepository extends EntityRepository {
     public function getFiscalYear() {
         $result = null;
         $query = $this->getEntityManager()
-                ->createQuery('SELECT a FROM AcmeAccountBundle:Period a'
+                ->createQuery('SELECT a FROM SDROAccountBundle:Period a'
                         . ' WHERE a.enable = ?1 '
                 )
                 ->setParameter('1', true)
@@ -88,7 +88,7 @@ class AccountRepository extends EntityRepository {
 //ORDER BY a.account_number DESC 
 
         $query = $this->getEntityManager()
-                ->createQuery('SELECT a.account_number FROM AcmeAccountBundle:Account a'
+                ->createQuery('SELECT a.account_number FROM SDROAccountBundle:Account a'
 //                        . ' WHERE a.account_number like ?1 '
                 . ' ORDER BY a.account_number DESC'
                 )
@@ -118,7 +118,7 @@ class AccountRepository extends EntityRepository {
 //ORDER BY a.account_id DESC 
 
         $query = $this->getEntityManager()
-                ->createQuery('SELECT a FROM AcmeAccountBundle:Ledger a GROUP BY a.account ORDER BY a.account DESC'
+                ->createQuery('SELECT a FROM SDROAccountBundle:Ledger a GROUP BY a.account ORDER BY a.account DESC'
         );
         try {
             $result = $query->getResult();
@@ -135,7 +135,7 @@ class AccountRepository extends EntityRepository {
     public function getLastBalanceByAccountId($id) {
         $query = $this->getEntityManager()
                 ->createQuery(
-                        'SELECT a.balance FROM AcmeAccountBundle:Ledger a WHERE a.account = :id ORDER BY a.id DESC'
+                        'SELECT a.balance FROM SDROAccountBundle:Ledger a WHERE a.account = :id ORDER BY a.id DESC'
                 )
                 ->setParameter('id', $id);
         try {
@@ -153,12 +153,12 @@ class AccountRepository extends EntityRepository {
 
     public function getLastBalanceByAccountNumber($number) {
 
-        $account = $this->getRepository('AcmeAccountBundle:Account')->findByAccountNumber($number);
+        $account = $this->getRepository('SDROAccountBundle:Account')->findByAccountNumber($number);
 
 
         $query = $this->getEntityManager()
                 ->createQuery(
-                        'SELECT a.balance FROM AcmeAccountBundle:Ledger a WHERE a.account = :id ORDER BY a.id DESC'
+                        'SELECT a.balance FROM SDROAccountBundle:Ledger a WHERE a.account = :id ORDER BY a.id DESC'
                 )
                 ->setParameter('id', $account->getId());
         try {
@@ -177,7 +177,7 @@ class AccountRepository extends EntityRepository {
     public function getFBBankAccount() {
         $query = $this->getEntityManager()
                 ->createQuery(
-                        'SELECT a FROM AcmeAccountBundle:Account a WHERE a.account_number = :id'
+                        'SELECT a FROM SDROAccountBundle:Account a WHERE a.account_number = :id'
                 )
 //                ->setParameter('id', AccountUtil::ACCOUNT_NUMBER_FB_BANK)
                 ;

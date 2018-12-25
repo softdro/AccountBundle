@@ -42,9 +42,9 @@ class AccountsController extends Controller {
      */
     public function listAction() {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AppAcmeAccountBundle:Account')->findAll();
+        $entities = $em->getRepository('SDROAccountBundle:Account')->findAll();
 //        throw new \Exception('sdf');
-        return $this->render("AppAcmeAccountBundle:Account:info.html.twig", array(
+        return $this->render("SDROAccountBundle:Account:info.html.twig", array(
                     'entities' => $entities,
 //                    'form' => $form->createView(),
         ));
@@ -94,7 +94,7 @@ class AccountsController extends Controller {
 //            return $this->redirect($this->generateUrl('admin_acme_account_accounts_payment', array('id' => $entity->getId())));
         }
 
-        return $this->render("AppAcmeAccountBundle:Account:payment.html.twig", array(
+        return $this->render("SDROAccountBundle:Account:payment.html.twig", array(
                     'entity' => $batch,
                     'form' => $form->createView(),
         ));
@@ -138,7 +138,7 @@ class AccountsController extends Controller {
 
 //        \Doctrine\Common\Util\Debug::dump($data);
 //        throw new \Exception('sdf');
-        return $this->render("AppAcmeAccountBundle:Account:receive.html.twig", array(
+        return $this->render("SDROAccountBundle:Account:receive.html.twig", array(
                     'data' => $data,
                     'entities' => $entities,
 //                    'form' => $form->createView(),
@@ -185,7 +185,7 @@ class AccountsController extends Controller {
             if ($des == null)
                 $des = "Investment by : $amount";
 
-            $sec_acc = $em->getRepository("AppAcmeAccountBundle:Account")->findOneBy(array('code' => AccountUtil::CODE_OWNERS_CAPITAL));
+            $sec_acc = $em->getRepository("SDROAccountBundle:Account")->findOneBy(array('code' => AccountUtil::CODE_OWNERS_CAPITAL));
 //            throw new \Exception($sec_acc);
             $batch = new \SDRO\AccountBundle\Entity\Batch();
             $batch->setFirstAccount($form['payment']->getData());
@@ -199,7 +199,7 @@ class AccountsController extends Controller {
 
             $em->flush();
         }
-        return $this->render("AppAcmeAccountBundle:Account:investment.html.twig", array(
+        return $this->render("SDROAccountBundle:Account:investment.html.twig", array(
                     'entity' => $entity,
                     'form' => $form->createView(),
         ));
@@ -212,10 +212,10 @@ class AccountsController extends Controller {
 //        throw new \Exception($id. ", ".$name . ", " . $name1);
         $em = $this->getDoctrine()->getManager();
         $accObj = new Accounts($em);
-        $acc = $em->getRepository('AppAcmeAccountBundle:Account')->find($id);
+        $acc = $em->getRepository('SDROAccountBundle:Account')->find($id);
 //          throw new \Exception(sizeof($acc));
         if ($acc) {
-            $entity = $em->getRepository('AppAcmeAccountBundle:ShareAccount')->findOneBy(array('account' => $acc));
+            $entity = $em->getRepository('SDROAccountBundle:ShareAccount')->findOneBy(array('account' => $acc));
         } else {
             $entity = new \SDRO\AccountBundle\Entity\ShareAccount();
             $entity->setInvestment(0);
@@ -238,7 +238,7 @@ class AccountsController extends Controller {
         ));
 
         $form->add('submit', 'submit', array('label' => 'Create'));
-        return $this->render("AppAcmeAccountBundle:Account:ajax/_ajaxInvestment.html.twig", array(
+        return $this->render("SDROAccountBundle:Account:ajax/_ajaxInvestment.html.twig", array(
                     'entities' => $entity,
                     'form' => $form->createView(),
         ));
@@ -289,7 +289,7 @@ class AccountsController extends Controller {
 //            return $this->redirect($this->generateUrl('admin_acme_account_accounts_payment', array('id' => $entity->getId())));
         }
 
-        return $this->render("AppAcmeAccountBundle:Account:transfer.html.twig", array(
+        return $this->render("SDROAccountBundle:Account:transfer.html.twig", array(
                     'entity' => $batch,
                     'form' => $form->createView(),
         ));
@@ -336,9 +336,9 @@ class AccountsController extends Controller {
 
     public function ajaxlistsAction() {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AppAcmeAccountBundle:Ledger')->findBy(array(), array('id' => 'DESC'), 10);
+        $entities = $em->getRepository('SDROAccountBundle:Ledger')->findBy(array(), array('id' => 'DESC'), 10);
 //        throw new \Exception('sdf');
-        return $this->render("AppAcmeAccountBundle:Account:ajax/_ajaxlists.html.twig", array(
+        return $this->render("SDROAccountBundle:Account:ajax/_ajaxlists.html.twig", array(
                     'entities' => $entities,
 //                    'form' => $form->createView(),
         ));
@@ -369,7 +369,7 @@ class AccountsController extends Controller {
 //            }
 //        }
 //
-//        return $this->render("AcmeAccountBundle:Account:create.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:create.html.twig", array(
 //                    'entity' => $entity,
 //                    'form' => $form->createView(),
 //        ));
@@ -404,7 +404,7 @@ class AccountsController extends Controller {
 //     */
 //    public function createAction(Request $request = null) {
 //
-////        $r = $this->getDoctrine()->getManager()->getRepository('AcmeAccountBundle:AccountGroup')->findAll();
+////        $r = $this->getDoctrine()->getManager()->getRepository('SDROAccountBundle:AccountGroup')->findAll();
 ////        \Doctrine\Common\Util\Debug::dump($r[0]->getFinancialHead()[1]->getId());
 ////        throw new \Exception(sizeof($r));
 //
@@ -418,7 +418,7 @@ class AccountsController extends Controller {
 //
 //        $form = $this->createCreateForm($entity);
 //
-//        return $this->render("AcmeAccountBundle:Account:create.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:create.html.twig", array(
 //                    'entity' => $entity,
 //                    'form' => $form->createView(),
 //        ));
@@ -434,7 +434,7 @@ class AccountsController extends Controller {
 //    public function showAction($id = null, Request $request = null) {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('AcmeAccountBundle:Account')->find($id);
+//        $entity = $em->getRepository('SDROAccountBundle:Account')->find($id);
 //
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Unable to find Account entity.');
@@ -442,7 +442,7 @@ class AccountsController extends Controller {
 //
 //        $deleteForm = $this->createDeleteForm($id);
 //
-//        return $this->render("AcmeAccountBundle:Account:show.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:show.html.twig", array(
 //                    'entity' => $entity,
 //                    'delete_form' => $deleteForm->createView(),
 //        ));
@@ -457,7 +457,7 @@ class AccountsController extends Controller {
 //    public function editAction($id = null, Request $request = null) {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('AcmeAccountBundle:Account')->find($id);
+//        $entity = $em->getRepository('SDROAccountBundle:Account')->find($id);
 //
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Unable to find Account entity.');
@@ -466,7 +466,7 @@ class AccountsController extends Controller {
 //        $editForm = $this->createEditForm($entity);
 //        $deleteForm = $this->createDeleteForm($id);
 //
-//        return $this->render("AcmeAccountBundle:Account:edit.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:edit.html.twig", array(
 //                    'entity' => $entity,
 //                    'form' => $editForm->createView(),
 //                    'delete_form' => $deleteForm->createView(),
@@ -496,12 +496,12 @@ class AccountsController extends Controller {
 //     *
 //     * #Route("/{id}", name="account_update")
 //     * @Method("PUT")
-//     * @Template("AcmeAccountBundle:Account:edit.html.twig")
+//     * @Template("SDROAccountBundle:Account:edit.html.twig")
 //     */
 //    public function updateAction(Request $request, $id) {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('AcmeAccountBundle:Account')->find($id);
+//        $entity = $em->getRepository('SDROAccountBundle:Account')->find($id);
 //
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Unable to find Account entity.');
@@ -535,7 +535,7 @@ class AccountsController extends Controller {
 //            return $this->redirect($this->generateUrl('acme_admin_account_account_edit', array('id' => $id)));
 //        }
 //
-//        return $this->render("AcmeAccountBundle:Account:edit.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:edit.html.twig", array(
 //                    'entity' => $entity,
 //                    'form' => $editForm->createView(),
 //                    'delete_form' => $deleteForm->createView(),

@@ -37,9 +37,9 @@ class ReportsController extends Controller {
      */
     public function listAction() {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AppAcmeAccountBundle:Account')->findAll();
+        $entities = $em->getRepository('SDROAccountBundle:Account')->findAll();
 
-        return $this->render("AppAcmeAccountBundle:Reports:info.html.twig", array(
+        return $this->render("SDROAccountBundle:Reports:info.html.twig", array(
                     'entities' => $entities,
 //                    'form' => $form->createView(),
         ));
@@ -87,9 +87,9 @@ class ReportsController extends Controller {
 
     public function ajaxlistsAction() {
         $em = $this->getDoctrine()->getManager();
-        $entities = $em->getRepository('AppAcmeAccountBundle:Ledger')->findBy(array(), array('id' => 'DESC'), 10);
+        $entities = $em->getRepository('SDROAccountBundle:Ledger')->findBy(array(), array('id' => 'DESC'), 10);
 //        throw new \Exception('sdf');
-        return $this->render("AppAcmeAccountBundle:Account:ajax/_ajaxlists.html.twig", array(
+        return $this->render("SDROAccountBundle:Account:ajax/_ajaxlists.html.twig", array(
                     'entities' => $entities,
 //                    'form' => $form->createView(),
         ));
@@ -133,7 +133,7 @@ class ReportsController extends Controller {
 
 //        \Doctrine\Common\Util\Debug::dump($data);
 //        throw new \Exception($netincome);
-        return $this->render("AppAcmeAccountBundle:Reports:istatement.html.twig", array(
+        return $this->render("SDROAccountBundle:Reports:istatement.html.twig", array(
                     'data' => $data,
                     'entities' => $reportIndex,
                     'fy' => $fy->getTitle(),
@@ -203,7 +203,7 @@ class ReportsController extends Controller {
 //        }
 //        \Doctrine\Common\Util\Debug::dump($data);
 //        throw new \Exception('sdf');
-        return $this->render("AppAcmeAccountBundle:Reports:bsheet.html.twig", array(
+        return $this->render("SDROAccountBundle:Reports:bsheet.html.twig", array(
                     'data' => $data,
 //                    'entities' => $reportIndex,
                     'fy' => $fy->getTitle(),
@@ -236,7 +236,7 @@ class ReportsController extends Controller {
 //            }
 //        }
 //
-//        return $this->render("AcmeAccountBundle:Account:create.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:create.html.twig", array(
 //                    'entity' => $entity,
 //                    'form' => $form->createView(),
 //        ));
@@ -271,7 +271,7 @@ class ReportsController extends Controller {
 //     */
 //    public function createAction(Request $request = null) {
 //
-////        $r = $this->getDoctrine()->getManager()->getRepository('AcmeAccountBundle:AccountGroup')->findAll();
+////        $r = $this->getDoctrine()->getManager()->getRepository('SDROAccountBundle:AccountGroup')->findAll();
 ////        \Doctrine\Common\Util\Debug::dump($r[0]->getFinancialHead()[1]->getId());
 ////        throw new \Exception(sizeof($r));
 //
@@ -285,7 +285,7 @@ class ReportsController extends Controller {
 //
 //        $form = $this->createCreateForm($entity);
 //
-//        return $this->render("AcmeAccountBundle:Account:create.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:create.html.twig", array(
 //                    'entity' => $entity,
 //                    'form' => $form->createView(),
 //        ));
@@ -301,7 +301,7 @@ class ReportsController extends Controller {
 //    public function showAction($id = null, Request $request = null) {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('AcmeAccountBundle:Account')->find($id);
+//        $entity = $em->getRepository('SDROAccountBundle:Account')->find($id);
 //
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Unable to find Account entity.');
@@ -309,7 +309,7 @@ class ReportsController extends Controller {
 //
 //        $deleteForm = $this->createDeleteForm($id);
 //
-//        return $this->render("AcmeAccountBundle:Account:show.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:show.html.twig", array(
 //                    'entity' => $entity,
 //                    'delete_form' => $deleteForm->createView(),
 //        ));
@@ -324,7 +324,7 @@ class ReportsController extends Controller {
 //    public function editAction($id = null, Request $request = null) {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('AcmeAccountBundle:Account')->find($id);
+//        $entity = $em->getRepository('SDROAccountBundle:Account')->find($id);
 //
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Unable to find Account entity.');
@@ -333,7 +333,7 @@ class ReportsController extends Controller {
 //        $editForm = $this->createEditForm($entity);
 //        $deleteForm = $this->createDeleteForm($id);
 //
-//        return $this->render("AcmeAccountBundle:Account:edit.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:edit.html.twig", array(
 //                    'entity' => $entity,
 //                    'form' => $editForm->createView(),
 //                    'delete_form' => $deleteForm->createView(),
@@ -363,12 +363,12 @@ class ReportsController extends Controller {
 //     *
 //     * #Route("/{id}", name="account_update")
 //     * @Method("PUT")
-//     * @Template("AcmeAccountBundle:Account:edit.html.twig")
+//     * @Template("SDROAccountBundle:Account:edit.html.twig")
 //     */
 //    public function updateAction(Request $request, $id) {
 //        $em = $this->getDoctrine()->getManager();
 //
-//        $entity = $em->getRepository('AcmeAccountBundle:Account')->find($id);
+//        $entity = $em->getRepository('SDROAccountBundle:Account')->find($id);
 //
 //        if (!$entity) {
 //            throw $this->createNotFoundException('Unable to find Account entity.');
@@ -402,7 +402,7 @@ class ReportsController extends Controller {
 //            return $this->redirect($this->generateUrl('acme_admin_account_account_edit', array('id' => $id)));
 //        }
 //
-//        return $this->render("AcmeAccountBundle:Account:edit.html.twig", array(
+//        return $this->render("SDROAccountBundle:Account:edit.html.twig", array(
 //                    'entity' => $entity,
 //                    'form' => $editForm->createView(),
 //                    'delete_form' => $deleteForm->createView(),

@@ -17,7 +17,7 @@ services:
 #            - { name: sonata.admin, manager_type: orm, group: "Setting", label: "Account" }
 #        arguments: [ null, Acme\AccountBundle\Entity\Account, ~ ]
 #        calls:
-#            - [ setTranslationDomain, [AcmeAccountBundle]]  
+#            - [ setTranslationDomain, [SDROAccountBundle]]  
                  
             
      
@@ -29,7 +29,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Setting", label: "Batch" }
         arguments: [ null, SDRO\AccountBundle\Entity\Batch, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            - [ setTranslationDomain, [SDROAccountBundle]]   
             
     app.acme.account.admin.period:
         class: SDRO\AccountBundle\Admin\PeriodAdmin
@@ -37,7 +37,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: "Fiscal Year" }
         arguments: [ null, SDRO\AccountBundle\Entity\Period, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]               
+            - [ setTranslationDomain, [SDROAccountBundle]]               
             
     app.acme.account.admin.report:
         class: SDRO\AccountBundle\Admin\ReportAdmin
@@ -45,7 +45,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: " Report" }
         arguments: [ null, SDRO\AccountBundle\Entity\Report, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            - [ setTranslationDomain, [SDROAccountBundle]]   
 
     app.acme.account.admin.report_index:
         class: SDRO\AccountBundle\Admin\ReportIndexAdmin
@@ -53,7 +53,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: " Report Index" }
         arguments: [ null, SDRO\AccountBundle\Entity\ReportIndex, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            - [ setTranslationDomain, [SDROAccountBundle]]   
             
     app.acme.account.admin.account_head:
         class: SDRO\AccountBundle\Admin\AccountHeadAdmin
@@ -61,7 +61,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: " Account Head" }
         arguments: [ null, SDRO\AccountBundle\Entity\AccountHead, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            - [ setTranslationDomain, [SDROAccountBundle]]   
 
     app.acme.account.admin.group:
         class: SDRO\AccountBundle\Admin\GroupAdmin
@@ -69,7 +69,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: "Group" }
         arguments: [ null, SDRO\AccountBundle\Entity\Group, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            - [ setTranslationDomain, [SDROAccountBundle]]   
 
     app.acme.account.admin.account_group:
         class: SDRO\AccountBundle\Admin\AccountGroupAdmin
@@ -77,7 +77,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Account Setting", label: " Account Group" }
         arguments: [ null, SDRO\AccountBundle\Entity\AccountGroup, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            - [ setTranslationDomain, [SDROAccountBundle]]   
             
     app.acme.account.admin.account:
         class: SDRO\AccountBundle\Admin\AccountAdmin
@@ -86,7 +86,7 @@ services:
         arguments: [ null, SDRO\AccountBundle\Entity\Account, null]  
 #        arguments: [null,null,null]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            - [ setTranslationDomain, [SDROAccountBundle]]   
 
 #================> ACCOUNT INFO <====================
             
@@ -94,10 +94,10 @@ services:
 #        class: Acme\AccountBundle\Admin\AccountsAdmin
 #        tags:
 #            - { name: sonata.admin, manager_type: orm, group: "Accounts Info", label: "Accounts Transaction" }
-#        arguments: [ null, Acme\AccountBundle\Entity\Account, AcmeAccountBundle:Admin\Accounts ]  
+#        arguments: [ null, Acme\AccountBundle\Entity\Account, SDROAccountBundle:Admin\Accounts ]  
 #        calls:
-#            - [ setTranslationDomain, [AcmeAccountBundle]]   
-#            - [ setTemplate, [list, AcmeAccountBundle:Account:lists.html.twig]]
+#            - [ setTranslationDomain, [SDROAccountBundle]]   
+#            - [ setTemplate, [list, SDROAccountBundle:Account:lists.html.twig]]
 
     app.acme.account.admin.invoice: 
         class: SDRO\AccountBundle\Admin\InvoiceAdmin
@@ -105,7 +105,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Accounts Info", label: "Invoice" }
         arguments: [ null, SDRO\AccountBundle\Entity\Invoice, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]       
+            - [ setTranslationDomain, [SDROAccountBundle]]       
 
     app.acme.account.admin.ledger:
         class: SDRO\AccountBundle\Admin\LedgerAdmin
@@ -113,7 +113,7 @@ services:
             - { name: sonata.admin, manager_type: orm, group: "Accounts Info", label: "Ledger" }
         arguments: [ null, SDRO\AccountBundle\Entity\Ledger, null ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]   
+            - [ setTranslationDomain, [SDROAccountBundle]]   
 
            
       
@@ -121,10 +121,10 @@ services:
         class: SDRO\AccountBundle\Admin\ReportsAdmin
         tags:
             - { name: sonata.admin, manager_type: orm, group: "Accounts Info", label: "Reports" }
-        arguments: [ null, SDRO\AccountBundle\Entity\Report, AppAcmeAccountBundle:Admin\Reports ]
+        arguments: [ null, SDRO\AccountBundle\Entity\Report, SDROAccountBundle:Admin\Reports ]
         calls:
-            - [ setTranslationDomain, [AppAcmeAccountBundle]]
-#            - [ setTemplate, [layout, AcmeAccountBundle::standard_layout.html.twig]]
+            - [ setTranslationDomain, [SDROAccountBundle]]
+#            - [ setTemplate, [layout, SDROAccountBundle::standard_layout.html.twig]]
             
                           
             
@@ -136,11 +136,11 @@ services:
 #            - ~
 #            - Acme\AccountBundle\Entity\Ledger
 #            - AcmeEducationBundle:Admin\StudentAdmin
-#            - AcmeAccountBundle:Ledger
+#            - SDROAccountBundle:Ledger
 #        calls:
-#            - [ setTranslationDomain, [AcmeAccountBundle]]
-#            - [ setTemplate, [list, AcmeAccountBundle:Ledger:base_list.html.twig]]
-#            - [ setTemplate, [edit, AcmeAccountBundle:Ledger:base_edit.html.twig]]
-#            - [ setTemplate, [info, AcmeAccountBundle:Ledger:list.html.twig]]
+#            - [ setTranslationDomain, [SDROAccountBundle]]
+#            - [ setTemplate, [list, SDROAccountBundle:Ledger:base_list.html.twig]]
+#            - [ setTemplate, [edit, SDROAccountBundle:Ledger:base_edit.html.twig]]
+#            - [ setTemplate, [info, SDROAccountBundle:Ledger:list.html.twig]]
             
                    

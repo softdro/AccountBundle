@@ -50,7 +50,7 @@
 {% endblock %}
 
 {% block list_filters_actions %}
-    {{ include('AcmeAccountBundle:Reports:__tabs.html.twig') }}
+    {{ include('SDROAccountBundle:Reports:__tabs.html.twig') }}
 {% endblock %}
 
 {% block form %}
@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <div class="card-body collapse in">
-                                {{ include('AcmeAccountBundle:Reports/ajax:income_statement_chart.html.twig') }}
+                                {{ include('SDROAccountBundle:Reports/ajax:income_statement_chart.html.twig') }}
                             </div>
                         </div>
                         {#<div class="icon">
@@ -100,7 +100,7 @@
                             </div>
                         </div>
                         <div class="card-body collapse in">
-                            {{ include('AcmeAccountBundle:Reports/ajax:daily_transaction_chart.html.twig') }}
+                            {{ include('SDROAccountBundle:Reports/ajax:daily_transaction_chart.html.twig') }}
                         </div>
                     </div>
                 </div>

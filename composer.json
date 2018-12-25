@@ -16,7 +16,9 @@
     ],
     "autoload": {
         "psr-4": {
-            "SDRO\\AccountBundle\\": ""
+            "SDRO\\": "src/SDRO",
+            "SDRO\\AccountBundle\\": "src/SDRO/AccountBundle",
+            "SDROAccountBundle\\": "src/SDRO/AccountBundle"
         }
     },
     "require": {
